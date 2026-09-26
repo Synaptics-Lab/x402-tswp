@@ -3,7 +3,7 @@
 ```
 DOCUMENT IDENTIFIER:    SYN-TD-2026-001
 DATE OF DISCLOSURE:     2026-09-26
-INVENTOR:               Abdul Shabazz <abdul@synapticchain.xyz>, Carl Rogers, Free Shabazz
+INVENTOR:               Abdul Shabazz <veritasvaultone@gmail.com>, Carl Rogers, Free Shabazz
 ASSIGNEE / ENTITY:      Synaptics Lab
 CLASSIFICATION (CPC):   G06Q 20/02; G06Q 20/382; G06Q 20/401; H04L 9/3247; H04L 67/02
 PERMANENT DOI:          https://doi.org/10.5281/zenodo.22979715

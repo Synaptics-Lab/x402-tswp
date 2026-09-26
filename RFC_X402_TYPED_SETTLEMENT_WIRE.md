@@ -5,7 +5,7 @@ Document:       RFC-0402
 Title:          The X402 Typed Settlement Wire Protocol (X402-TSWP)
 Category:       Standards Track
 Status:         Draft / Specification v1.0.0
-Author:         Abdul Shabazz <abdul@synapticchain.xyz>
+Author:         Abdul Shabazz <veritasvaultone@gmail.com>
 Organization:   Synaptics Lab
 Target Bodies:  IETF (HTTPbis), Linux Foundation FINOS (FDC3 Standards WG), Solana SIMD
 Created:        2026-09-26
