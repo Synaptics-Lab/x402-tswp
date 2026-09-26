@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE rfc>
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" docName="draft-shabazz-http-x402-tswp-00" ipr="trust200902" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true" version="3">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" version="3" category="std" docName="draft-shabazz-http-x402-tswp-00" ipr="trust200902" submissionType="IETF" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true">
   <front>
     <title abbrev="X402-TSWP">The X402 Typed Settlement Wire Protocol (X402-TSWP)</title>
     <seriesInfo name="Internet-Draft" value="draft-shabazz-http-x402-tswp-00"/>
@@ -32,21 +32,24 @@
   </front>
 
   <middle>
-    <section anchor="intro" title="Introduction">
+    <section anchor="intro">
+      <name>Introduction</name>
       <t>RFC 9110 Section 15.5.3 reserves HTTP status code 402 (Payment Required) for future use without standardizing the negotiation semantics, header grammars, or settlement verification workflows. As autonomous software agents and machine-to-machine (M2M) workflows proliferate, the absence of an open, deterministic payment protocol has led to fragmented, proprietary implementations that suffer from race conditions, absence of netting, and lack of enterprise auditability.</t>
       <t>X402-TSWP specifies an open framework establishing:</t>
       <ul>
-        <t>Standardized challenge and receipt HTTP headers for 402 negotiation.</t>
-        <t>A single-byte operational type discriminator registry (X402&lt;Type&gt;:&lt;Payload&gt;).</t>
-        <t>Byte-exact on-chain verification mechanisms that eliminate off-chain database desynchronization.</t>
+        <li><t>Standardized challenge and receipt HTTP headers for 402 negotiation.</t></li>
+        <li><t>A single-byte operational type discriminator registry (X402&lt;Type&gt;:&lt;Payload&gt;).</t></li>
+        <li><t>Byte-exact on-chain verification mechanisms that eliminate off-chain database desynchronization.</t></li>
       </ul>
     </section>
 
-    <section anchor="terminology" title="Terminology">
+    <section anchor="terminology">
+      <name>Terminology</name>
       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.</t>
     </section>
 
-    <section anchor="grammar" title="The X402-TSWP Wire Grammar">
+    <section anchor="grammar">
+      <name>The X402-TSWP Wire Grammar</name>
       <t>All X402-TSWP payloads conform to strict 7-bit ASCII without leading zeros in decimal fields. The grammar is defined in ABNF [RFC5234]:</t>
       <sourcecode type="abnf">
 x402-payload   = "X402" type-tag [ ":" sub-type ] ":" payload
@@ -56,28 +59,31 @@ payload        = 1*128( VCHAR ) ; Printable ASCII excluding whitespace
       </sourcecode>
     </section>
 
-    <section anchor="registry" title="Operational Discriminator Registry">
+    <section anchor="registry">
+      <name>Operational Discriminator Registry</name>
       <t>The protocol defines the following operational subtypes:</t>
       <dl>
         <dt>X402G:&lt;challenge&gt;</dt>
-        <dd>Gateway paywall challenge and API rate-limiting token (RFC 4122 UUIDv4).</dd>
+        <dd><t>Gateway paywall challenge and API rate-limiting token (RFC 4122 UUIDv4).</t></dd>
         <dt>X402L:&lt;lane&gt;:&lt;window&gt;:&lt;nonce&gt;</dt>
-        <dd>Parallel lane execution memo for concurrent state accounts.</dd>
+        <dd><t>Parallel lane execution memo for concurrent state accounts.</t></dd>
         <dt>X402W:&lt;window&gt;:&lt;participant&gt;</dt>
-        <dd>Multilateral netting window settlement wire memo.</dd>
+        <dd><t>Multilateral netting window settlement wire memo.</t></dd>
         <dt>X402M:&lt;corridor&gt;:&lt;maker&gt;</dt>
-        <dd>Market maker margin collateral escrow.</dd>
+        <dd><t>Market maker margin collateral escrow.</t></dd>
         <dt>X402MR:&lt;corridor&gt;:&lt;maker&gt;</dt>
-        <dd>Margin return payout.</dd>
+        <dd><t>Margin return payout.</t></dd>
         <dt>X402N:&lt;session&gt;:&lt;net&gt;</dt>
-        <dd>Consensus net obligation readback.</dd>
+        <dd><t>Consensus net obligation readback.</t></dd>
         <dt>X402E:&lt;corridor&gt;:&lt;uetr&gt;</dt>
-        <dd>ISO 20022 End-to-End identification (UETR) cross-border linkage.</dd>
+        <dd><t>ISO 20022 End-to-End identification (UETR) cross-border linkage.</t></dd>
       </dl>
     </section>
 
-    <section anchor="http_headers" title="HTTP Header Specifications">
-      <section title="Server Challenge (402 Payment Required)">
+    <section anchor="http_headers">
+      <name>HTTP Header Specifications</name>
+      <section anchor="server_challenge">
+        <name>Server Challenge (402 Payment Required)</name>
         <sourcecode type="http">
 HTTP/1.1 402 Payment Required
 WWW-Authenticate: X402-TSWP challenge="827da995-adda-4dd7-9fb5-d05338526873",
@@ -90,7 +96,8 @@ WWW-Authenticate: X402-TSWP challenge="827da995-adda-4dd7-9fb5-d05338526873",
         </sourcecode>
       </section>
 
-      <section title="Client Authorization Header">
+      <section anchor="client_auth">
+        <name>Client Authorization Header</name>
         <sourcecode type="http">
 GET /mcp/v1/tools/call HTTP/1.1
 Host: api.synapticchain.xyz
@@ -101,7 +108,8 @@ Authorization: X402-TSWP rail="solana-devnet",
         </sourcecode>
       </section>
 
-      <section title="Payment Receipt Header">
+      <section anchor="receipt_header">
+        <name>Payment Receipt Header</name>
         <sourcecode type="http">
 HTTP/1.1 200 OK
 X402-Receipt: rail="solana-devnet",
@@ -111,26 +119,30 @@ X402-Receipt: rail="solana-devnet",
       </section>
     </section>
 
-    <section anchor="onchain" title="Runtime Instruction Introspection">
+    <section anchor="onchain">
+      <name>Runtime Instruction Introspection</name>
       <t>On high-performance execution runtimes (such as Solana SBF), contracts enforcing X402-TSWP MUST NOT rely on client-supplied string arguments. Instead, the smart contract inspects the instruction execution context (sysvar::instructions) within the same atomic transaction, ensuring:</t>
       <ol>
-        <t>An instruction immediately preceding the settlement instruction invoked the canonical memo program.</t>
-        <t>The raw data slice of the memo instruction matches the expected typed wire preimage byte-for-byte.</t>
-        <t>Recipient token accounts enforce native required memo transfer guards.</t>
+        <li><t>An instruction immediately preceding the settlement instruction invoked the canonical memo program.</t></li>
+        <li><t>The raw data slice of the memo instruction matches the expected typed wire preimage byte-for-byte.</t></li>
+        <li><t>Recipient token accounts enforce native required memo transfer guards.</t></li>
       </ol>
     </section>
 
-    <section anchor="security" title="Security Considerations">
+    <section anchor="security">
+      <name>Security Considerations</name>
       <t>X402-TSWP eliminates front-running and replay attacks through nonce uniqueness: each challenge is cryptographically non-fungible and transitions to a terminal state upon single invocation. Byte-exact string verification prevents trailing garbage injection attacks.</t>
     </section>
 
-    <section anchor="iana" title="IANA Considerations">
+    <section anchor="iana">
+      <name>IANA Considerations</name>
       <t>This document requests registration of the 'X402-TSWP' authentication scheme in the 'Hypertext Transfer Protocol (HTTP) Authentication Scheme Registry' and registration of the 'X402-Receipt' response header.</t>
     </section>
   </middle>
 
   <back>
-    <references title="Normative References">
+    <references>
+      <name>Normative References</name>
       <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
         <front>
           <title>Key words for use in RFCs to Indicate Requirement Levels</title>
