@@ -3,9 +3,10 @@
 ```
 DOCUMENT IDENTIFIER:    SYN-TD-2026-001
 DATE OF DISCLOSURE:     2026-09-26
-INVENTOR:               Abdul Shabazz <abdul@synapticchain.xyz>
+INVENTOR:               Abdul Shabazz <abdul@synapticchain.xyz>, Carl Rogers, Free Shabazz
 ASSIGNEE / ENTITY:      Synaptics Lab
 CLASSIFICATION (CPC):   G06Q 20/02; G06Q 20/382; G06Q 20/401; H04L 9/3247; H04L 67/02
+PERMANENT DOI:          https://doi.org/10.5281/zenodo.22979715
 TARGET REGISTRIES:      Zenodo (CERN / OpenAIRE), IETF Datatracker, FINOS / Linux Foundation
 LEGAL EFFECT:           Defensive Prior Art under 35 U.S.C. § 102(a)(1) & EPC Article 54(2);
                         1-Year Grace Period Anchor under 35 U.S.C. § 102(b)(1).

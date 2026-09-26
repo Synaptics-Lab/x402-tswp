@@ -1,6 +1,7 @@
 # X402 Typed Settlement Wire Protocol (X402-TSWP)
 
 [![Specification Status](https://img.shields.io/badge/Status-Draft%20Specification-blue.svg)](RFC_X402_TYPED_SETTLEMENT_WIRE.md)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22979715.svg)](https://doi.org/10.5281/zenodo.22979715)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 
 An extensible, byte-exact state-machine grammar and multi-rail transport protocol for machine-to-machine (M2M) micropayments, collateralization, and multilateral netting settlements.
