@@ -3,9 +3,10 @@
 ```
 DOCUMENT IDENTIFIER:    SYN-TD-2026-002
 DATE OF DISCLOSURE:     2026-09-27
-INVENTOR(S):            Abdul Shabazz <veritasvaultone@gmail.com>, Carl Rogers, Free Shabazz
+INVENTOR(S):            Abdul Shabazz <veritasvaultone@gmail.com>, Carl Rogers, Free Shabazz, Janice Words
 ASSIGNEE / ENTITY:      Synaptics Lab
 CLASSIFICATION (CPC):   G06F 21/53; G06F 21/60; G06Q 20/401; G06Q 20/02; H04L 9/3247; H04L 67/02
+PERMANENT DOI:          https://doi.org/10.5281/zenodo.22983522
 TARGET REGISTRIES:      Zenodo (CERN / OpenAIRE), Confidential Computing Consortium (CCC), FINOS
 LEGAL EFFECT:           Defensive Prior Art under 35 U.S.C. § 102(a)(1) & EPC Article 54(2);
                         1-Year Grace Period Anchor under 35 U.S.C. § 102(b)(1).
