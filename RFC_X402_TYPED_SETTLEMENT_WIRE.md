@@ -7,6 +7,7 @@ Category:       Standards Track
 Status:         Draft / Specification v1.0.0
 Author:         Abdul Shabazz <veritasvaultone@gmail.com>
 Organization:   Synaptics Lab
+Solana SIMD:    https://github.com/solana-foundation/solana-improvement-documents/pull/671
 IETF Draft:     https://datatracker.ietf.org/doc/draft-shabazz-http-x402-tswp/
 Zenodo DOI:     https://doi.org/10.5281/zenodo.22979715
 Target Bodies:  IETF (HTTPbis), Linux Foundation FINOS (FDC3 Standards WG), Solana SIMD
