@@ -1,8 +1,7 @@
 Network Working Group                                         A. Shabazz
-Internet-Draft                                                 C. Rogers
-Intended status: Standards Track                              F. Shabazz
-Expires: March 30, 2027                                    Synaptics Lab
-                                                      September 26, 2026
+Internet-Draft                                             Synaptics Lab
+Intended status: Standards Track                      September 26, 2026
+Expires: March 30, 2027
 
 
           The X402 Typed Settlement Wire Protocol (X402-TSWP)
@@ -63,8 +62,9 @@ Table of Contents
    6.  Runtime Instruction Introspection . . . . . . . . . . . . . . . 4
    7.  Security Considerations . . . . . . . . . . . . . . . . . . . . 5
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . . 5
-   9.  Normative References  . . . . . . . . . . . . . . . . . . . . . 5
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . . 6
+   9.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . . . 5
+   10. Normative References  . . . . . . . . . . . . . . . . . . . . . 5
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . . 6
 
 1.  Introduction
 
@@ -192,7 +192,13 @@ Table of Contents
    Scheme Registry' and registration of the 'X402-Receipt' response
    header.
 
-9.  Normative References
+9.  Acknowledgements
+
+   The author gratefully acknowledges the contributions, architectural
+   reviews, and validation assistance of Carl Rogers and Free Shabazz
+   (Synaptics Lab).
+
+10. Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -218,16 +224,8 @@ Table of Contents
               DOI 10.17487/RFC9110, June 2022,
               <https://www.rfc-editor.org/info/rfc9110>.
 
-Authors' Addresses
+Author's Address
 
    Abdul Shabazz
-   Synaptics Lab
-   Email: veritasvaultone@gmail.com
-
-   Carl Rogers
-   Synaptics Lab
-   Email: veritasvaultone@gmail.com
-
-   Free Shabazz
    Synaptics Lab
    Email: veritasvaultone@gmail.com

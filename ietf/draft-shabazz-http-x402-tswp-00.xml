@@ -10,18 +10,6 @@
         <email>veritasvaultone@gmail.com</email>
       </address>
     </author>
-    <author fullname="Carl Rogers" initials="C." surname="Rogers">
-      <organization>Synaptics Lab</organization>
-      <address>
-        <email>veritasvaultone@gmail.com</email>
-      </address>
-    </author>
-    <author fullname="Free Shabazz" initials="F." surname="Shabazz">
-      <organization>Synaptics Lab</organization>
-      <address>
-        <email>veritasvaultone@gmail.com</email>
-      </address>
-    </author>
     <date year="2026" month="September" day="26"/>
     <area>Applications and Real-Time</area>
     <keyword>HTTP 402</keyword>
@@ -146,6 +134,11 @@ X402-Receipt: rail="solana-devnet",
   </middle>
 
   <back>
+    <section anchor="acknowledgements">
+      <name>Acknowledgements</name>
+      <t>The author gratefully acknowledges the contributions, architectural reviews, and validation assistance of Carl Rogers and Free Shabazz (Synaptics Lab).</t>
+    </section>
+
     <references>
       <name>Normative References</name>
       <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
