@@ -1,4 +1,4 @@
-HTTP Working Group                                            A. Shabazz
+Network Working Group                                         A. Shabazz
 Internet-Draft                                                 C. Rogers
 Intended status: Standards Track                              F. Shabazz
 Expires: March 30, 2027                                    Synaptics Lab
@@ -226,6 +226,8 @@ Authors' Addresses
 
    Carl Rogers
    Synaptics Lab
+   Email: veritasvaultone@gmail.com
 
    Free Shabazz
    Synaptics Lab
+   Email: veritasvaultone@gmail.com
