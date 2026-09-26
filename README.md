@@ -5,6 +5,7 @@
 [![XRPL Standards](https://img.shields.io/badge/XRPL%20XLS-Discussion%20%23646-red.svg)](https://github.com/XRPLF/XRPL-Standards/discussions/646)
 [![IETF Datatracker](https://img.shields.io/badge/IETF-draft--shabazz--http--x402--tswp--00-blue.svg)](https://datatracker.ietf.org/doc/draft-shabazz-http-x402-tswp/)
 [![IANA Registry](https://img.shields.io/badge/IANA%20Fields-Issues%20%2362%20%26%20%2363-darkgreen.svg)](https://github.com/protocol-registries/http-fields/issues/62)
+[![Interledger RFC](https://img.shields.io/badge/Interledger%20RFC-PR%20%23605-brightgreen.svg)](https://github.com/interledger/rfcs/pull/605)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22979715.svg)](https://doi.org/10.5281/zenodo.22979715)
 [![MCP SEP](https://img.shields.io/badge/MCP%20SEP-PR%20%231%20(Fork)-orange.svg)](https://github.com/Synaptics-Lab/modelcontextprotocol/pull/1)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
