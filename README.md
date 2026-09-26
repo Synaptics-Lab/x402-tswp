@@ -2,6 +2,7 @@
 
 [![Specification Status](https://img.shields.io/badge/Status-Draft%20Specification-blue.svg)](RFC_X402_TYPED_SETTLEMENT_WIRE.md)
 [![Solana SIMD](https://img.shields.io/badge/Solana%20SIMD-PR%20%23671-purple.svg)](https://github.com/solana-foundation/solana-improvement-documents/pull/671)
+[![XRPL Standards](https://img.shields.io/badge/XRPL%20XLS-Discussion%20%23646-red.svg)](https://github.com/XRPLF/XRPL-Standards/discussions/646)
 [![IETF Datatracker](https://img.shields.io/badge/IETF-draft--shabazz--http--x402--tswp--00-blue.svg)](https://datatracker.ietf.org/doc/draft-shabazz-http-x402-tswp/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22979715.svg)](https://doi.org/10.5281/zenodo.22979715)
 [![MCP SEP](https://img.shields.io/badge/MCP%20SEP-PR%20%231%20(Fork)-orange.svg)](https://github.com/Synaptics-Lab/modelcontextprotocol/pull/1)
