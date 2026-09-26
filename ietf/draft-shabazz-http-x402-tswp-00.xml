@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rfc>
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" category="std" docName="draft-shabazz-http-x402-tswp-00" ipr="trust200902" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true" version="3">
+  <front>
+    <title abbrev="X402-TSWP">The X402 Typed Settlement Wire Protocol (X402-TSWP)</title>
+    <seriesInfo name="Internet-Draft" value="draft-shabazz-http-x402-tswp-00"/>
+    <author fullname="Abdul Shabazz" initials="A." surname="Shabazz">
+      <organization>Synaptics Lab</organization>
+      <address>
+        <email>abdul@synapticchain.xyz</email>
+      </address>
+    </author>
+    <author fullname="Carl Rogers" initials="C." surname="Rogers">
+      <organization>Synaptics Lab</organization>
+    </author>
+    <author fullname="Free Shabazz" initials="F." surname="Shabazz">
+      <organization>Synaptics Lab</organization>
+    </author>
+    <date year="2026" month="September" day="26"/>
+    <area>Applications and Real-Time</area>
+    <workgroup>HTTP Working Group</workgroup>
+    <keyword>HTTP 402</keyword>
+    <keyword>Micropayments</keyword>
+    <keyword>Settlement</keyword>
+    <keyword>ISO 20022</keyword>
+    <keyword>Solana</keyword>
+    <keyword>XRPL</keyword>
+
+    <abstract>
+      <t>This document specifies the X402 Typed Settlement Wire Protocol (X402-TSWP), an application-layer extension to Hypertext Transfer Protocol status code 402 (Payment Required). X402-TSWP defines machine-to-machine challenge-response headers, operational type discriminators, and deterministic multi-rail blockchain carrier grammars. On parallel execution environments, X402-TSWP eliminates runtime regular-expression parsing in favor of byte-exact equality verification via instruction introspection, establishing atomic non-repudiation between web services, SWIFT ISO 20022 messages, and public ledger state transitions.</t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section anchor="intro" title="Introduction">
+      <t>RFC 9110 Section 15.5.3 reserves HTTP status code 402 (Payment Required) for future use without standardizing the negotiation semantics, header grammars, or settlement verification workflows. As autonomous software agents and machine-to-machine (M2M) workflows proliferate, the absence of an open, deterministic payment protocol has led to fragmented, proprietary implementations that suffer from race conditions, absence of netting, and lack of enterprise auditability.</t>
+      <t>X402-TSWP specifies an open framework establishing:</t>
+      <ul>
+        <t>Standardized challenge and receipt HTTP headers for 402 negotiation.</t>
+        <t>A single-byte operational type discriminator registry (X402&lt;Type&gt;:&lt;Payload&gt;).</t>
+        <t>Byte-exact on-chain verification mechanisms that eliminate off-chain database desynchronization.</t>
+      </ul>
+    </section>
+
+    <section anchor="terminology" title="Terminology">
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.</t>
+    </section>
+
+    <section anchor="grammar" title="The X402-TSWP Wire Grammar">
+      <t>All X402-TSWP payloads conform to strict 7-bit ASCII without leading zeros in decimal fields. The grammar is defined in ABNF [RFC5234]:</t>
+      <sourcecode type="abnf">
+x402-payload   = "X402" type-tag [ ":" sub-type ] ":" payload
+type-tag       = ALPHA ; Single ASCII uppercase character [A-Z]
+sub-type       = ALPHA ; Optional qualifier (e.g., 'R', 'N')
+payload        = 1*128( VCHAR ) ; Printable ASCII excluding whitespace
+      </sourcecode>
+    </section>
+
+    <section anchor="registry" title="Operational Discriminator Registry">
+      <t>The protocol defines the following operational subtypes:</t>
+      <dl>
+        <dt>X402G:&lt;challenge&gt;</dt>
+        <dd>Gateway paywall challenge and API rate-limiting token (RFC 4122 UUIDv4).</dd>
+        <dt>X402L:&lt;lane&gt;:&lt;window&gt;:&lt;nonce&gt;</dt>
+        <dd>Parallel lane execution memo for concurrent state accounts.</dd>
+        <dt>X402W:&lt;window&gt;:&lt;participant&gt;</dt>
+        <dd>Multilateral netting window settlement wire memo.</dd>
+        <dt>X402M:&lt;corridor&gt;:&lt;maker&gt;</dt>
+        <dd>Market maker margin collateral escrow.</dd>
+        <dt>X402MR:&lt;corridor&gt;:&lt;maker&gt;</dt>
+        <dd>Margin return payout.</dd>
+        <dt>X402N:&lt;session&gt;:&lt;net&gt;</dt>
+        <dd>Consensus net obligation readback.</dd>
+        <dt>X402E:&lt;corridor&gt;:&lt;uetr&gt;</dt>
+        <dd>ISO 20022 End-to-End identification (UETR) cross-border linkage.</dd>
+      </dl>
+    </section>
+
+    <section anchor="http_headers" title="HTTP Header Specifications">
+      <section title="Server Challenge (402 Payment Required)">
+        <sourcecode type="http">
+HTTP/1.1 402 Payment Required
+WWW-Authenticate: X402-TSWP challenge="827da995-adda-4dd7-9fb5-d05338526873",
+                            rails="solana,xrpl",
+                            amount="160",
+                            unit="drops",
+                            recipient="rKmtCQXuZpXWgb7KiwKbiQwJeX6AtbpMtC",
+                            memo-grammar="X402G:&lt;challenge&gt;",
+                            expires="1789860818"
+        </sourcecode>
+      </section>
+
+      <section title="Client Authorization Header">
+        <sourcecode type="http">
+GET /mcp/v1/tools/call HTTP/1.1
+Host: api.synapticchain.xyz
+Authorization: X402-TSWP rail="solana-devnet",
+                         tx="4uQ7T...8kL",
+                         type="L",
+                         memo="X402L:151:1789860218:806384975"
+        </sourcecode>
+      </section>
+
+      <section title="Payment Receipt Header">
+        <sourcecode type="http">
+HTTP/1.1 200 OK
+X402-Receipt: rail="solana-devnet",
+              leaf="a161f58503615516e4a7aa678f19a7dc67ab6ef76b236f2d712a54ed80a6d331",
+              status="settled"
+        </sourcecode>
+      </section>
+    </section>
+
+    <section anchor="onchain" title="Runtime Instruction Introspection">
+      <t>On high-performance execution runtimes (such as Solana SBF), contracts enforcing X402-TSWP MUST NOT rely on client-supplied string arguments. Instead, the smart contract inspects the instruction execution context (sysvar::instructions) within the same atomic transaction, ensuring:</t>
+      <ol>
+        <t>An instruction immediately preceding the settlement instruction invoked the canonical memo program.</t>
+        <t>The raw data slice of the memo instruction matches the expected typed wire preimage byte-for-byte.</t>
+        <t>Recipient token accounts enforce native required memo transfer guards.</t>
+      </ol>
+    </section>
+
+    <section anchor="security" title="Security Considerations">
+      <t>X402-TSWP eliminates front-running and replay attacks through nonce uniqueness: each challenge is cryptographically non-fungible and transitions to a terminal state upon single invocation. Byte-exact string verification prevents trailing garbage injection attacks.</t>
+    </section>
+
+    <section anchor="iana" title="IANA Considerations">
+      <t>This document requests registration of the 'X402-TSWP' authentication scheme in the 'Hypertext Transfer Protocol (HTTP) Authentication Scheme Registry' and registration of the 'X402-Receipt' response header.</t>
+    </section>
+  </middle>
+
+  <back>
+    <references title="Normative References">
+      <reference anchor="RFC2119" target="https://www.rfc-editor.org/info/rfc2119">
+        <front>
+          <title>Key words for use in RFCs to Indicate Requirement Levels</title>
+          <author initials="S." surname="Bradner"/>
+          <date year="1997" month="March"/>
+        </front>
+        <seriesInfo name="BCP" value="14"/>
+        <seriesInfo name="RFC" value="2119"/>
+      </reference>
+      <reference anchor="RFC8174" target="https://www.rfc-editor.org/info/rfc8174">
+        <front>
+          <title>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</title>
+          <author initials="B." surname="Leiba"/>
+          <date year="2017" month="May"/>
+        </front>
+        <seriesInfo name="BCP" value="14"/>
+        <seriesInfo name="RFC" value="8174"/>
+      </reference>
+      <reference anchor="RFC5234" target="https://www.rfc-editor.org/info/rfc5234">
+        <front>
+          <title>Augmented BNF for Syntax Specifications: ABNF</title>
+          <author initials="D." surname="Crocker" role="editor"/>
+          <author initials="P." surname="Overell"/>
+          <date year="2008" month="January"/>
+        </front>
+        <seriesInfo name="STD" value="68"/>
+        <seriesInfo name="RFC" value="5234"/>
+      </reference>
+      <reference anchor="RFC9110" target="https://www.rfc-editor.org/info/rfc9110">
+        <front>
+          <title>HTTP Semantics</title>
+          <author initials="R." surname="Fielding" role="editor"/>
+          <author initials="M." surname="Nottingham" role="editor"/>
+          <author initials="J." surname="Reschke" role="editor"/>
+          <date year="2022" month="June"/>
+        </front>
+        <seriesInfo name="STD" value="97"/>
+        <seriesInfo name="RFC" value="9110"/>
+      </reference>
+      <reference anchor="RFC4122" target="https://www.rfc-editor.org/info/rfc4122">
+        <front>
+          <title>A Universally Unique IDentifier (UUID) URN Namespace</title>
+          <author initials="P." surname="Leach"/>
+          <author initials="M." surname="Mealling"/>
+          <author initials="R." surname="Salz"/>
+          <date year="2005" month="July"/>
+        </front>
+        <seriesInfo name="RFC" value="4122"/>
+      </reference>
+    </references>
+  </back>
+</rfc>

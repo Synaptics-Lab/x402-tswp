@@ -1,0 +1,231 @@
+HTTP Working Group                                            A. Shabazz
+Internet-Draft                                                 C. Rogers
+Intended status: Standards Track                              F. Shabazz
+Expires: March 30, 2027                                    Synaptics Lab
+                                                      September 26, 2026
+
+
+          The X402 Typed Settlement Wire Protocol (X402-TSWP)
+                    draft-shabazz-http-x402-tswp-00
+
+Abstract
+
+   This document specifies the X402 Typed Settlement Wire Protocol
+   (X402-TSWP), an application-layer extension to Hypertext Transfer
+   Protocol status code 402 (Payment Required).  X402-TSWP defines
+   machine-to-machine challenge-response headers, operational type
+   discriminators, and deterministic multi-rail blockchain carrier
+   grammars.  On parallel execution environments, X402-TSWP eliminates
+   runtime regular-expression parsing in favor of byte-exact equality
+   verification via instruction introspection, establishing atomic
+   non-repudiation between web services, SWIFT ISO 20022 messages, and
+   public ledger state transitions.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on March 30, 2027.
+
+Copyright Notice
+
+   Copyright (c) 2026 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (https://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . . . 2
+   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+   3.  The X402-TSWP Wire Grammar  . . . . . . . . . . . . . . . . . . 2
+   4.  Operational Discriminator Registry  . . . . . . . . . . . . . . 3
+   5.  HTTP Header Specifications  . . . . . . . . . . . . . . . . . . 3
+       5.1.  Server Challenge (402 Payment Required) . . . . . . . . . 3
+       5.2.  Client Authorization Header . . . . . . . . . . . . . . . 4
+       5.3.  Payment Receipt Header  . . . . . . . . . . . . . . . . . 4
+   6.  Runtime Instruction Introspection . . . . . . . . . . . . . . . 4
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . . . 5
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . . 5
+   9.  Normative References  . . . . . . . . . . . . . . . . . . . . . 5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . . . 6
+
+1.  Introduction
+
+   RFC 9110 Section 15.5.3 reserves HTTP status code 402 (Payment
+   Required) for future use without standardizing the negotiation
+   semantics, header grammars, or settlement verification workflows.  As
+   autonomous software agents and machine-to-machine (M2M) workflows
+   proliferate, the absence of an open, deterministic payment protocol
+   has led to fragmented, proprietary implementations that suffer from
+   race conditions, absence of netting, and lack of enterprise
+   auditability.
+
+   X402-TSWP specifies an open framework establishing:
+
+   *  Standardized challenge and receipt HTTP headers for 402
+      negotiation.
+
+   *  A single-byte operational type discriminator registry
+      (X402<Type>:<Payload>).
+
+   *  Byte-exact on-chain verification mechanisms that eliminate off-
+      chain database desynchronization.
+
+2.  Terminology
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  The X402-TSWP Wire Grammar
+
+   All X402-TSWP payloads conform to strict 7-bit ASCII without leading
+   zeros in decimal fields.  The grammar is defined in ABNF [RFC5234]:
+
+   x402-payload   = "X402" type-tag [ ":" sub-type ] ":" payload
+   type-tag       = ALPHA ; Single ASCII uppercase character [A-Z]
+   sub-type       = ALPHA ; Optional qualifier (e.g., 'R', 'N')
+   payload        = 1*128( VCHAR ) ; Printable ASCII excluding whitespace
+
+4.  Operational Discriminator Registry
+
+   The protocol defines the following operational subtypes:
+
+   X402G:<challenge>
+      Gateway paywall challenge and API rate-limiting token (RFC 4122
+      UUIDv4).
+
+   X402L:<lane>:<window>:<nonce>
+      Parallel lane execution memo for concurrent state accounts.
+
+   X402W:<window>:<participant>
+      Multilateral netting window settlement wire memo.
+
+   X402M:<corridor>:<maker>
+      Market maker margin collateral escrow.
+
+   X402MR:<corridor>:<maker>
+      Margin return payout.
+
+   X402N:<session>:<net>
+      Consensus net obligation readback.
+
+   X402E:<corridor>:<uetr>
+      ISO 20022 End-to-End identification (UETR) cross-border linkage.
+
+5.  HTTP Header Specifications
+
+5.1.  Server Challenge (402 Payment Required)
+
+   HTTP/1.1 402 Payment Required
+   WWW-Authenticate: X402-TSWP challenge="827da995-adda-4dd7-9fb5-d05338526873",
+                               rails="solana,xrpl",
+                               amount="160",
+                               unit="drops",
+                               recipient="rKmtCQXuZpXWgb7KiwKbiQwJeX6AtbpMtC",
+                               memo-grammar="X402G:<challenge>",
+                               expires="1789860818"
+
+5.2.  Client Authorization Header
+
+   GET /mcp/v1/tools/call HTTP/1.1
+   Host: api.synapticchain.xyz
+   Authorization: X402-TSWP rail="solana-devnet",
+                            tx="4uQ7T...8kL",
+                            type="L",
+                            memo="X402L:151:1789860218:806384975"
+
+5.3.  Payment Receipt Header
+
+   HTTP/1.1 200 OK
+   X402-Receipt: rail="solana-devnet",
+                 leaf="a161f58503615516e4a7aa678f19a7dc67ab6ef76b236f2d712a54ed80a6d331",
+                 status="settled"
+
+6.  Runtime Instruction Introspection
+
+   On high-performance execution runtimes (such as Solana SBF),
+   contracts enforcing X402-TSWP MUST NOT rely on client-supplied string
+   arguments.  Instead, the smart contract inspects the instruction
+   execution context (sysvar::instructions) within the same atomic
+   transaction, ensuring:
+
+   1.  An instruction immediately preceding the settlement instruction
+       invoked the canonical memo program.
+
+   2.  The raw data slice of the memo instruction matches the expected
+       typed wire preimage byte-for-byte.
+
+   3.  Recipient token accounts enforce native required memo transfer
+       guards.
+
+7.  Security Considerations
+
+   X402-TSWP eliminates front-running and replay attacks through nonce
+   uniqueness: each challenge is cryptographically non-fungible and
+   transitions to a terminal state upon single invocation.  Byte-exact
+   string verification prevents trailing garbage injection attacks.
+
+8.  IANA Considerations
+
+   This document requests registration of the 'X402-TSWP' authentication
+   scheme in the 'Hypertext Transfer Protocol (HTTP) Authentication
+   Scheme Registry' and registration of the 'X402-Receipt' response
+   header.
+
+9.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC4122]  Leach, P., Mealling, M., and R. Salz, "A Universally
+              Unique IDentifier (UUID) URN Namespace", RFC 4122,
+              DOI 10.17487/RFC4122, July 2005,
+              <https://www.rfc-editor.org/info/rfc4122>.
+
+   [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
+              Specifications: ABNF", STD 68, RFC 5234,
+              DOI 10.17487/RFC5234, January 2008,
+              <https://www.rfc-editor.org/info/rfc5234>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+   [RFC9110]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "HTTP Semantics", STD 97, RFC 9110,
+              DOI 10.17487/RFC9110, June 2022,
+              <https://www.rfc-editor.org/info/rfc9110>.
+
+Authors' Addresses
+
+   Abdul Shabazz
+   Synaptics Lab
+   Email: abdul@synapticchain.xyz
+
+   Carl Rogers
+   Synaptics Lab
+
+   Free Shabazz
+   Synaptics Lab
