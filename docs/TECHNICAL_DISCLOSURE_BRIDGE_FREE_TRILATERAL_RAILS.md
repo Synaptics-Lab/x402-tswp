@@ -274,7 +274,42 @@ Verification Status:   PASSED (0 Elliptic Curve Operations, 1,005 Total SHA3-256
 
 ---
 
-## 10. Conclusion & Legal Effect
+## 10. Formal Patent Claims (Defensive Scope)
+
+What is claimed and hereby disclosed to the public domain is:
+
+**1. A computer-implemented method for bridge-free trilateral multi-rail financial clearing across heterogeneous distributed ledgers, the method comprising:**
+- receiving, at a multilateral clearinghouse, an institutional payment instruction specifying an ISO 20022 Unique End-to-End Transaction Reference (UETR), a source rail, a destination rail, and a monetary settlement amount;
+- aggregating gross payment instructions across discrete time windows into a multilateral netting matrix, and asserting that the sum of gross debits equals the sum of gross credits with an error delta strictly equal to zero ($\Delta \equiv 0$);
+- generating an immutable canonical preimage comprising the UETR, a target rail discriminator, and a monotonic lane nonce;
+- dispatching native settlement transactions without minting or burning synthetic wrapped tokens across:
+  (i) a first distributed ledger (Solana) executing an atomic memo instruction and an SPL Token-2022 transfer, wherein an on-chain contract asserts via runtime instruction introspection that the memo payload matches the canonical preimage; and
+  (ii) a second distributed ledger (XRPL) embedding the canonical preimage into a native DENSE-16 SHAMap memo field; and
+- generating, within locked physical memory, a post-quantum Winternitz One-Time Signature (WOTS+) checkpoint leaf bound to the netting matrix and committing the leaf to a third sovereign consensus ledger (SynapticChain L1).
+
+**2. The method of claim 1,** wherein the first distributed ledger runtime halts execution with a consensus program error `0x24` if the memo instruction is omitted, malformed, or fails byte-exact equality with the canonical preimage.
+
+**3. The method of claim 1,** wherein the second distributed ledger records the canonical preimage under hexadecimal memo type `0x58343032` within a validated ledger state trie, permitting zero-relayer cryptographic verification of finality.
+
+**4. The method of claim 1,** wherein the post-quantum WOTS+ checkpoint leaf comprises 67 hash chains evaluated over SHA3-256 with Winternitz parameter $w=16$, providing quantum resistance against Shor's algorithm without requiring hard-fork modifications to the signature schemes of the first or second distributed ledgers.
+
+**5. The method of claim 1,** wherein private key seeds for the 67 hash chains are retained strictly in non-pageable memory locked via `mlock`, and hardware state registers enforce single-use execution per netting window to prevent signature equivocation.
+
+**6. The method of claim 1,** wherein execution failure, consensus stall, or network partition on the first distributed ledger is asynchronously decoupled such that settlement on the second distributed ledger and third sovereign ledger finalizes without collateral liquidation, synthetic asset de-pegging, or systemic contagion.
+
+**7. The method of claim 1,** wherein the synthetic token supply on all rails is invariant at zero ($\text{Supply}_{\text{synthetic}} \equiv 0$), completely eliminating smart-contract custodial bridge honeypots.
+
+**8. The method of claim 1,** wherein transactions are allocated across 256 concurrent execution lanes via SHA3-256 rendezvous hashing, and mempool head-of-line blocking is barred by an out-of-order 256-bit sliding window bitmap.
+
+**9. A multi-rail financial clearing system comprising:**
+- a sovereign Layer-1 execution engine operating across 256 parallel lanes via Byzantine fault-tolerant consensus;
+- an in-memory multilateral netting engine asserting continuous zero-delta solvency ($\Delta \equiv 0$);
+- a post-quantum hash attestation module generating 67-chain WOTS+ commitments in locked physical memory; and
+- a dual-rail settlement dispatcher executing native transfers on external distributed ledgers via runtime instruction introspection and radix-tree memo encapsulation without custodial bridge contracts.
+
+---
+
+## 11. Conclusion & Legal Effect
 
 The disclosed architecture provides a comprehensive, bridge-free solution to cross-chain liquidity settlement, eliminating wrapped token honeypots, guaranteeing fail-closed runtime instruction introspection, and shielding trilateral clearing against quantum forgery via WOTS+ hash attestation.
 
