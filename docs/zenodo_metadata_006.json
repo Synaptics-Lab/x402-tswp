@@ -1,0 +1,64 @@
+{
+  "title": "SynapticChain: A Stateless Edge-Settlement Layer-1 Blockchain Architecture Utilizing SCBFT and X402-TSWP Integration",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>A master technical disclosure and defensive patent specification establishing prior art for the overarching system architecture of SynapticChain, a Layer-1 distributed ledger technology optimized for stateless edge-settlement. Unlike traditional blockchain architectures that rely on stateful, Turing-complete virtual machines (smart contracts) to process compliance and application logic, SynapticChain pushes computational execution to off-chain cryptographic enclaves. The blockchain functions exclusively as a deterministic state-transition matrix, processing cryptographically attested multi-instruction envelopes via Sovereign Consensus Byzantine Fault Tolerance (SCBFT).</p><p>Features native ALPN X402 Typed Settlement Wire Protocol (X402-TSWP) ingestion, ADR-062 256-lane partition allocation via rendezvous hashing, and instruction introspection runtime aborts (0x24) enforcing Mantis Invariant 9 (SigmaDebits == SigmaCredits, Delta=0). Establishes absolute defensive prior art under 35 U.S.C. § 102(a)(1) and EPC Article 54(2) pre-empting competitor claims on stateless edge-settlement Layer-1 blockchains.</p>",
+  "creators": [
+    {
+      "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "Blockchain",
+    "Layer-1",
+    "SCBFT",
+    "X402-TSWP",
+    "Stateless Execution",
+    "Smart Contract Security",
+    "FINOS",
+    "Defensive Prior Art",
+    "35 U.S.C. 102",
+    "EPC Art 54"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22979715",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22983522",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22994745",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22996200",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22996628",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "isSupplementedBy",
+      "identifier": "https://github.com/Synaptics-Lab/x402-tswp",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ]
+}
