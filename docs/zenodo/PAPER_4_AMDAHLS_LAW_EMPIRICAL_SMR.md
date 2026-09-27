@@ -6,6 +6,7 @@
 **Classification:** Distributed Systems, State Machine Replication, Parallel Transaction Execution, Concurrency Theory  
 **Target Registry:** CERN Zenodo (Defensive Prior Art pursuant to 35 U.S.C. § 102(a)(1) & EPC Art. 54(2))  
 **Prior Art Family:** SynapticChain Master Umbrella (`10.5281/zenodo.23000701`), ADR-062 Specification (`10.5281/zenodo.22996200`)  
+**Live Registered DOI:** [10.5281/zenodo.23003928](https://doi.org/10.5281/zenodo.23003928)  
 **Artifact Repositories:** `github.com/Synaptics-Lab/Synaptic-Source`, `github.com/Synaptics-Lab/x402-tswp`  
 
 ---

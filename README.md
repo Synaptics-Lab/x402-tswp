@@ -16,6 +16,7 @@
 [![DOI: SYN-TD-2026-007](https://zenodo.org/badge/DOI/10.5281/zenodo.23002617.svg)](https://doi.org/10.5281/zenodo.23002617)
 [![DOI: SYN-TD-2026-008](https://zenodo.org/badge/DOI/10.5281/zenodo.23002720.svg)](https://doi.org/10.5281/zenodo.23002720)
 [![DOI: SYN-TD-2026-009](https://zenodo.org/badge/DOI/10.5281/zenodo.23002771.svg)](https://doi.org/10.5281/zenodo.23002771)
+[![DOI: SYN-TD-2026-010](https://zenodo.org/badge/DOI/10.5281/zenodo.23003928.svg)](https://doi.org/10.5281/zenodo.23003928)
 [![MCP SEP](https://img.shields.io/badge/MCP%20SEP-PR%20%231%20(Fork)-orange.svg)](https://github.com/Synaptics-Lab/modelcontextprotocol/pull/1)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 
