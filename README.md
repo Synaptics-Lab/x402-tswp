@@ -11,7 +11,7 @@
 [![IANA ALPN](https://img.shields.io/badge/IANA%20ALPN-x402%20%26%20tswp-darkblue.svg)](ietf/IETF_ANNOUNCEMENT_AND_IANA_REGISTRATION.md)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 
-### CERN Zenodo Defensive Patent Portfolio (11 Registered DOIs)
+### CERN Zenodo Defensive Patent Portfolio (12 Registered DOIs)
 [![DOI: SYN-TD-2026-001](https://zenodo.org/badge/DOI/10.5281/zenodo.22979715.svg)](https://doi.org/10.5281/zenodo.22979715)
 [![DOI: SYN-TD-2026-002](https://zenodo.org/badge/DOI/10.5281/zenodo.22983522.svg)](https://doi.org/10.5281/zenodo.22983522)
 [![DOI: SYN-TD-2026-003](https://zenodo.org/badge/DOI/10.5281/zenodo.22994745.svg)](https://doi.org/10.5281/zenodo.22994745)
@@ -23,6 +23,7 @@
 [![DOI: SYN-TD-2026-009](https://zenodo.org/badge/DOI/10.5281/zenodo.23002771.svg)](https://doi.org/10.5281/zenodo.23002771)
 [![DOI: SYN-TD-2026-010](https://zenodo.org/badge/DOI/10.5281/zenodo.23003928.svg)](https://doi.org/10.5281/zenodo.23003928)
 [![DOI: SYN-TD-2026-011](https://zenodo.org/badge/DOI/10.5281/zenodo.23038493.svg)](https://doi.org/10.5281/zenodo.23038493)
+[![DOI: SYN-TD-2026-012](https://zenodo.org/badge/DOI/10.5281/zenodo.23041137.svg)](https://doi.org/10.5281/zenodo.23041137)
 
 An extensible, byte-exact state-machine grammar and multi-rail transport protocol for machine-to-machine (M2M) micropayments, collateralization, and multilateral netting settlements.
 

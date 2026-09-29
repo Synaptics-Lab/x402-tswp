@@ -952,7 +952,7 @@ GRAMMAR
   discriminator = "X402" type-tag [sub-tag]
   All payloads = 7-bit ASCII, max 250 bytes total
 
-10 DISCRIMINATORS
+12 DISCRIMINATORS
   X402G:<uuid4>                    gateway paywall
   X402M:<corridor>:<maker>         margin escrow
   X402MR:<corridor>:<maker>        margin return
@@ -963,16 +963,19 @@ GRAMMAR
   X402E:<corridor>:<uetr>          ISO 20022 UETR linkage
   X402W:<session>:<participant>    net settlement
   X402N:<session>:<net-amount>     consensus receipt
+  X402Z:<proof>:<nullifier>:<root> ZK state attestation & double-pledge defense
+  X402R:<class>:<id>:<commitment>  RWA legal lien encumbrance / title claim
 
-8 PATTERNS
-  GTA   = [G]
-  MEO   = [G,M]
-  DvP   = [G,M,L,B,E,W,N]
-  SARF  = [G,M,M,L,E,W,W,N]      (two M, two W)
-  MNC   = session lifecycle + per-participant [W,N] PTBs
-  CRW   = [G,M,L,E,W,N]
-  BSS   = [BN] open, [B,L,E,W,N]* loop, [BR] close
-  DNS   = accumulate + seal + per-participant [W,N] + finalize + fold
+9 PATTERNS
+  GTA     = [G]
+  MEO     = [G,M]
+  DvP     = [G,M,L,B,E,W,N]
+  SARF    = [G,M,M,L,E,W,W,N]      (two M, two W)
+  MNC     = session lifecycle + per-participant [W,N] PTBs
+  CRW     = [G,M,L,E,W,N]
+  BSS     = [BN] open, [B,L,E,W,N]* loop, [BR] close
+  DNS     = accumulate + seal + per-participant [W,N] + finalize + fold
+  RWA-DvP = [G,Z,R,L,E,W,N]        (ZK state attestation + RWA lien DvP)
 
 INVARIANT 9 (CORE)
   ΣDebits ≡ ΣCredits + ΣFees   (Δ = 0)
@@ -996,6 +999,7 @@ FOLD CHAIN
 PROHIBITED
   bech32m text as hash input | dry-run trust | float fee arithmetic
   regex memo parse | |payable-receivable| without direction | split lifecycle
+  nullifier reuse (double-pledging) | unbacked RWA lien without atomic DvP
 ```
 
 ---
@@ -1006,14 +1010,17 @@ PROHIBITED
 |:---|:---|
 | IETF Internet-Draft | `draft-shabazz-http-x402-tswp-01` |
 | Zenodo DOI (Umbrella) | `10.5281/zenodo.23000701` (SYN-TD-006) |
+| Zenodo DOI (ZKO RWA DvP) | `10.5281/zenodo.23041137` (SYN-TD-012) |
 | Zenodo DOI (Financial PTB Standard) | `10.5281/zenodo.23038493` (SYN-TD-011) |
+| Zenodo DOI (ZK ISO 20022 Clearing) | `10.5281/zenodo.23002720` (SYN-TD-008) |
 | Zenodo DOI (PTB Pipelining) | `10.5281/zenodo.22996628` (SYN-TD-005) |
 | Zenodo DOI (ADR-062 Lanes) | `10.5281/zenodo.22996200` (SYN-TD-004) |
 | Zenodo DOI (Core Protocol) | `10.5281/zenodo.22979715` (SYN-TD-001) |
 | FINOS FDC3 PR | `#2204` — `StartPayment` intent (FDC3 ↔ X402-TSWP bridge) |
 | Solana SIMD | `SIMD-0671` |
 | Interledger RFC | `RFC #605` |
-| ISO 20022 | `pacs.008.001.08`, `camt.053`, `camt.054`, `fxtr.013` |
+| UNCITRAL | Model Law on Electronic Transferable Records (MLETR §10) |
+| ISO 20022 | `pacs.008.001.08`, `camt.053`, `camt.054`, `fxtr.013`, `sese.023` |
 | RFC 4122 | UUIDv4 UETR format |
 
 ---
