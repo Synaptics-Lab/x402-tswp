@@ -1,12 +1,17 @@
 # X402 Typed Settlement Wire Protocol (X402-TSWP)
 
-[![Specification Status](https://img.shields.io/badge/Status-Draft%20Specification-blue.svg)](RFC_X402_TYPED_SETTLEMENT_WIRE.md)
+### Standards Track & Industry Consortia
+[![IETF Datatracker](https://img.shields.io/badge/IETF-draft--shabazz--http--x402--tswp--01-blue.svg)](https://datatracker.ietf.org/doc/draft-shabazz-http-x402-tswp/)
+[![FINOS FDC3](https://img.shields.io/badge/FINOS%20FDC3-PR%20%232204-008080.svg)](https://github.com/finos/FDC3/pull/2204)
 [![Solana SIMD](https://img.shields.io/badge/Solana%20SIMD-PR%20%23671-purple.svg)](https://github.com/solana-foundation/solana-improvement-documents/pull/671)
 [![XRPL Standards](https://img.shields.io/badge/XRPL%20XLS-Discussion%20%23646-red.svg)](https://github.com/XRPLF/XRPL-Standards/discussions/646)
-[![IETF Datatracker](https://img.shields.io/badge/IETF-draft--shabazz--http--x402--tswp--00-blue.svg)](https://datatracker.ietf.org/doc/draft-shabazz-http-x402-tswp/)
+[![Interledger RFC](https://img.shields.io/badge/Interledger%20RFC-PR%20%23605-brightgreen.svg)](https://github.com/interledger/rfcs/pull/605)
+[![MCP SEP](https://img.shields.io/badge/MCP%20SEP-PR%20%231-orange.svg)](https://github.com/Synaptics-Lab/modelcontextprotocol/pull/1)
 [![IANA Registry](https://img.shields.io/badge/IANA%20Fields-Issues%20%2362%20%26%20%2363-darkgreen.svg)](https://github.com/protocol-registries/http-fields/issues/62)
 [![IANA ALPN](https://img.shields.io/badge/IANA%20ALPN-x402%20%26%20tswp-darkblue.svg)](ietf/IETF_ANNOUNCEMENT_AND_IANA_REGISTRATION.md)
-[![Interledger RFC](https://img.shields.io/badge/Interledger%20RFC-PR%20%23605-brightgreen.svg)](https://github.com/interledger/rfcs/pull/605)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+
+### CERN Zenodo Defensive Patent Portfolio (11 Registered DOIs)
 [![DOI: SYN-TD-2026-001](https://zenodo.org/badge/DOI/10.5281/zenodo.22979715.svg)](https://doi.org/10.5281/zenodo.22979715)
 [![DOI: SYN-TD-2026-002](https://zenodo.org/badge/DOI/10.5281/zenodo.22983522.svg)](https://doi.org/10.5281/zenodo.22983522)
 [![DOI: SYN-TD-2026-003](https://zenodo.org/badge/DOI/10.5281/zenodo.22994745.svg)](https://doi.org/10.5281/zenodo.22994745)
@@ -17,8 +22,7 @@
 [![DOI: SYN-TD-2026-008](https://zenodo.org/badge/DOI/10.5281/zenodo.23002720.svg)](https://doi.org/10.5281/zenodo.23002720)
 [![DOI: SYN-TD-2026-009](https://zenodo.org/badge/DOI/10.5281/zenodo.23002771.svg)](https://doi.org/10.5281/zenodo.23002771)
 [![DOI: SYN-TD-2026-010](https://zenodo.org/badge/DOI/10.5281/zenodo.23003928.svg)](https://doi.org/10.5281/zenodo.23003928)
-[![MCP SEP](https://img.shields.io/badge/MCP%20SEP-PR%20%231%20(Fork)-orange.svg)](https://github.com/Synaptics-Lab/modelcontextprotocol/pull/1)
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+[![DOI: SYN-TD-2026-011](https://zenodo.org/badge/DOI/10.5281/zenodo.23038493.svg)](https://doi.org/10.5281/zenodo.23038493)
 
 An extensible, byte-exact state-machine grammar and multi-rail transport protocol for machine-to-machine (M2M) micropayments, collateralization, and multilateral netting settlements.
 
@@ -73,7 +77,11 @@ X402 type discriminators chain sequentially inside a single Programmable Transac
 
 ## Core Specifications
 
-- [**RFC-0402 Master Specification**](RFC_X402_TYPED_SETTLEMENT_WIRE.md): Formal ABNF grammar, type discriminator registry, Solana SBF verification rules, and HTTP header profiles.
+- [**SYN-FPS-2026-001: Financial PTB Wire Standard (SYN-TD-011)**](docs/SYN-FPS-2026-001-FINANCIAL-PTB-WIRE-STANDARD.md) — [DOI 10.5281/zenodo.23038493](https://doi.org/10.5281/zenodo.23038493): Extended institutional finance protocol language, 8 banking patterns (DvP, FX-SARF, MNC, CRW, BSS, DNS, GTA, MEO), PTB composition algebra, Invariant 9 continuous solvency conservation, and ISO 20022 / Shariah compliance mappings.
+- [**IETF Internet-Draft: draft-shabazz-http-x402-tswp-01**](https://datatracker.ietf.org/doc/draft-shabazz-http-x402-tswp/) — Application-layer framing extension to HTTP status code 402 with typed challenge-response headers and byte-exact multi-rail settlement grammars.
+- [**FINOS FDC3 Specification PR #2204**](https://github.com/finos/FDC3/pull/2204) — `StartPayment` intent bridging institutional financial desktop agents and trader blotters directly to X402-TSWP settlement pipelines.
+- [**Solana Foundation SIMD-0671**](https://github.com/solana-foundation/solana-improvement-documents/pull/671) — Typed settlement wire linkage via SPL Memo v2 and Token-2022 instruction introspection (`sysvar::instructions`).
+- [**RFC-0402 Master Specification**](RFC_X402_TYPED_SETTLEMENT_WIRE.md) — Foundational ABNF grammar, type discriminator registry, and runtime verification rules.
 
 
 ## Operational Type Discriminator Registry

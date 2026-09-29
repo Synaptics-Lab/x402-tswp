@@ -9,7 +9,7 @@ Expires: 1 April 2027
 
 
           The X402 Typed Settlement Wire Protocol (X402-TSWP)
-                    draft-shabazz-http-x402-tswp-00
+                    draft-shabazz-http-x402-tswp-01
 
 Abstract
 

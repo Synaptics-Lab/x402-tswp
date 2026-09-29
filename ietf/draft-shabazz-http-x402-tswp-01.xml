@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" version="3" category="info" docName="draft-shabazz-http-x402-tswp-00" ipr="trust200902" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" version="3" category="info" docName="draft-shabazz-http-x402-tswp-01" ipr="trust200902" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true">
   <front>
     <title abbrev="X402-TSWP">The X402 Typed Settlement Wire Protocol (X402-TSWP)</title>
-    <seriesInfo name="Internet-Draft" value="draft-shabazz-http-x402-tswp-00"/>
+    <seriesInfo name="Internet-Draft" value="draft-shabazz-http-x402-tswp-01"/>
     <author fullname="Trevin Rogers" initials="T." surname="Rogers">
       <organization>Synaptics Lab</organization>
       <address>
