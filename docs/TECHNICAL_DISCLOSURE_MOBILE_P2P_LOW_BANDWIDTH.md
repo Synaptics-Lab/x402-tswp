@@ -1,5 +1,6 @@
 **Technical Disclosure Identifier:** `SYN-TD-2026-013`  
-**Permanent DOI:** Pending Zenodo Registration (SYN-TD-013)  
+**Permanent DOI:** [**`10.5281/zenodo.23041557`**](https://doi.org/10.5281/zenodo.23041557)  
+**Zenodo Record:** [**`https://zenodo.org/records/23041557`**](https://zenodo.org/records/23041557)  
 **Parent Master Umbrella DOI:** [**`10.5281/zenodo.23000701`**](https://doi.org/10.5281/zenodo.23000701) (`SYN-TD-2026-006`)  
 **Base Wire Standard Linkage:** [`SYN-FPS-2026-001`](https://doi.org/10.5281/zenodo.23038493) (`SYN-TD-2026-011`)  
 **Lane Nonce Architecture Linkage:** [`SYN-TD-2026-004`](https://doi.org/10.5281/zenodo.22996200) (`ADR-062`)  

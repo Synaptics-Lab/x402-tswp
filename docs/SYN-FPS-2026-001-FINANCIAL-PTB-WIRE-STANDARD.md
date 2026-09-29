@@ -1010,6 +1010,7 @@ PROHIBITED
 |:---|:---|
 | IETF Internet-Draft | `draft-shabazz-http-x402-tswp-01` |
 | Zenodo DOI (Umbrella) | `10.5281/zenodo.23000701` (SYN-TD-006) |
+| Zenodo DOI (Mobile P2P Low-Bandwidth) | `10.5281/zenodo.23041557` (SYN-TD-013) |
 | Zenodo DOI (ZKO RWA DvP) | `10.5281/zenodo.23041137` (SYN-TD-012) |
 | Zenodo DOI (Financial PTB Standard) | `10.5281/zenodo.23038493` (SYN-TD-011) |
 | Zenodo DOI (ZK ISO 20022 Clearing) | `10.5281/zenodo.23002720` (SYN-TD-008) |
