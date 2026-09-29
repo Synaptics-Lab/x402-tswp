@@ -1,13 +1,21 @@
 # Sovereign Digital Public Infrastructure (DPI) Blueprint
-## Blotter-Direct Sovereign Payment Rail, Real-Time Fiscal Revenue Ingestion, and Off-Grid Settlement Architecture for the United Republic of Tanzania
+## Blotter-Direct Sovereign Payment Rail, Real-Time Fiscal Revenue Ingestion, and Float Sovereignty in Emerging Markets: A Case Study of Tanzania
 
+**Technical Disclosure Identifier:** `SYN-TD-2026-015`  
 **Document Identifier:** `SYN-DPI-TZA-2026-001`  
-**Classification:** Sovereign Macroeconomic & Technical Architecture  
-**Author:** Abdul Shabazz (Trevin Rogers), Synaptics Lab  
+**Permanent DOI:** Pending Registration (`10.5281/zenodo.xxxxxxx`)  
+**Parent Master Umbrella DOI:** [**`10.5281/zenodo.23000701`**](https://doi.org/10.5281/zenodo.23000701) (`SYN-TD-2026-006`)  
+**Base Wire Standard Linkage:** [`SYN-FPS-2026-001`](https://doi.org/10.5281/zenodo.23038493) (`SYN-TD-2026-011`)  
+**Mobile Wire Linkage:** [`SYN-TD-2026-013`](https://doi.org/10.5281/zenodo.23041557)  
+**LoRa Mesh DTN Linkage:** [`SYN-TD-2026-014`](https://doi.org/10.5281/zenodo.23041910)  
+**Lane Nonce Architecture Linkage:** [`SYN-TD-2026-004`](https://doi.org/10.5281/zenodo.22996200) (`ADR-062`)  
+**Primary Authors:** Abdul Shabazz (Trevin Rogers), Synaptics Lab  
 **Operational Base:** Dar es Salaam, Tanzania  
+**Publication Date:** September 29, 2026  
+**Defensive Publication Scope:** 35 U.S.C. § 102(a)(1) & EPC Article 54(2) Prior Art  
+**Canonical Implementation Repository:** `https://github.com/Synaptics-Lab/Synaptic-Source` (`apps/tzcc-wallet`, `apps/x402-tswp`, `docs/specs`)  
 **Target Institutions:** Bank of Tanzania (BoT), Ministry of Finance (MoF), Tanzania Revenue Authority (TRA), Tanzania Communications Regulatory Authority (TCRA)  
-**Foundational Linkages:** `SYN-TD-006` (Master Sovereign Clearinghouse, DOI `10.5281/zenodo.23000701`), `SYN-TD-013` (Mobile Low-Bandwidth Framing, DOI `10.5281/zenodo.23041557`), `SYN-TD-014` (Off-Grid LoRa Radio Framing, DOI `10.5281/zenodo.23041910`), `SYN-FPS-2026-001` (Financial PTB Wire Standard)  
-**Date:** September 29, 2026  
+**Statutory Linkages:** Bank of Tanzania Act 2006, National Payment Systems Act (NPSA) 2015, Electronic and Postal Communications Act (EPOCA) 2010 §§26-27, Registration of Persons Act (NIDA)  
 
 ---
 
