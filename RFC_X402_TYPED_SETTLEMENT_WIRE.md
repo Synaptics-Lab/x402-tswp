@@ -76,7 +76,9 @@ X402
  ├── L : Concurrent Lane Funding
  ├── N : Net Obligation Readback
  ├── W : Multilateral Netting Window Settlement
- └── E : Cross-Border Corridor ISO 20022 Linkage
+ ├── E : Cross-Border Corridor ISO 20022 Linkage
+ ├── Z : Zero-Knowledge State Attestation & Range Proof (ZKO)
+ └── R : Real-World Asset (RWA) Lien Encumbrance
 ```
 
 ### 4.1 `X402G:<challenge>` (Gateway Paywall & Metering)
@@ -108,6 +110,16 @@ X402
 - **Grammar:** `X402E:<u32_corridor>:<uuidv4_uetr>`
 - **Transport Carrier:** Cross-border settlement carriers.
 - **Semantics:** Directly binds an on-chain escrow release or Token-2022 transfer to an ISO 20022 `pacs.008.001.08` SWIFT message envelope.
+
+### 4.7 `X402Z:<proof_id>:<nullifier>:<state_root>` (ZK State Attestation)
+- **Grammar:** `X402Z:<hex16>:<hex32>:<hex32>`
+- **Transport Carrier:** Token-2022 / SBF Sysvar / Enclave.
+- **Semantics:** Verifies a Zero-Knowledge Knowledge Object (ZKO) proving physical asset title and solvent valuation range ($v \ge \text{threshold}$) in volatile memory. Checks nullifier against on-chain nullifier bitset to mathematically eliminate double-pledging.
+
+### 4.8 `X402R:<asset_class>:<asset_id>:<commitment>` (RWA Lien Encumbrance)
+- **Grammar:** `X402R:<asset_class>:<asset_id>:<hex32>`
+- **Transport Carrier:** Multi-rail legal registry and settlement carriers.
+- **Semantics:** Attaches a programmatic legal lien (UCC-1, eBL, UNCITRAL MLETR) against settlement liquidity via Pedersen commitment $T = r \cdot G + v \cdot H$. Perfects atomically on `X402W` execution; unwinds instantly on abort ($\Delta = 0$).
 
 ---
 

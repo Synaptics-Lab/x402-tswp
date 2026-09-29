@@ -95,6 +95,8 @@ X402 type discriminators chain sequentially inside a single Programmable Transac
 | `X402N` | Net Readback | Synaptic L1 | Canonical consensus readback of multi-party clearing matrices. |
 | `X402W` | Net Settlement | Dual Rail | Multilateral netting finality binding debtor & creditor disbursements. |
 | `X402E` | Cross-Border | ISO 20022 | Cryptographically links escrow releases to SWIFT UETR tracking IDs. |
+| `X402Z` | ZK State Attestation | Token-2022 / SBF | Verifies zero-knowledge title, solvency range, & double-pledge nullifiers. |
+| `X402R` | RWA Lien Encumbrance | Multi-Rail Registry | Programmatic legal lien & title attachment (UCC-1/MLETR) in escrow. |
 
 ## Reference Implementations
 

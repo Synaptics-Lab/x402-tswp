@@ -55,14 +55,14 @@ X402-TSWP resolves all four by encoding the entire institutional financial lifec
 
 This document specifies:
 
-- The complete ABNF wire grammar for all 10 discriminators
+- The complete ABNF wire grammar for all 12 discriminators (including ZK Knowledge Objects and RWA Lien Encumbrance)
 - Semantic constraints on each discriminator (required fields, byte limits, carrier rules)
-- Eight canonical banking transaction patterns and their PTB composition
+- Nine canonical banking and asset settlement patterns and their PTB composition
 - The PTB composition algebra (sequencing, parallelism, rollback)
 - All protocol invariants (conservation, lane, bond, nonce)
 - Fee arithmetic (exact integer math, no floating point)
 - ISO 20022 CBPR+ / SWIFT UETR conformance mapping
-- Shariah compliance mapping for Islamic finance corridors
+- Shariah compliance mapping for Islamic finance corridors (including tangible RWA *Mal Mutaqawwim*)
 - Per-rail carrier semantics (SynapticChain L1, Solana SPL Token-2022, XRPL altnet, HTTP 402)
 - Minimum implementation requirements for conformance
 
@@ -121,13 +121,17 @@ session-id      = decimal-uint  ; monotonic session counter, u64 range
 corridor-id     = decimal-uint  ; registered corridor index, u64 range
 bps             = decimal-uint  ; basis points integer, range 0..10000
 net-amount      = decimal-uint  ; base units u128, no decimals
+hex32           = 64HEXDIG      ; 32-byte cryptographic hash or commitment, lowercase hex
+hex16           = 32HEXDIG      ; 16-byte identifier or proof scheme hash, lowercase hex
+asset-class     = 1*8ALPHA      ; RWA class: "INV", "EBL", "REC", "CO2", "CRE"
+asset-id        = 1*64( ALPHA / DIGIT / "-" / "_" ) ; Legal asset identifier (e.g. registry serial)
 ```
 
 ---
 
 ## 4. Discriminator Registry
 
-### 4.1 Complete Registry (10 Discriminators)
+### 4.1 Complete Registry (12 Discriminators)
 
 | Code | Full Name | Carrier(s) | Production Status |
 |:---|:---|:---|:---|
@@ -141,8 +145,10 @@ net-amount      = decimal-uint  ; base units u128, no decimals
 | `X402E` | ISO 20022 UETR Linkage | SBF Sysvar, CBPR+ | **LIVE** |
 | `X402W` | Net Settlement | Multi-Rail | **LIVE** |
 | `X402N` | Net Readback | L1 Consensus | **LIVE** |
+| `X402Z` | ZK State Attestation | Token-2022 / SBF Sysvar | **REGISTERED (SYN-TD-008)** |
+| `X402R` | RWA Lien Encumbrance | Multi-Rail Registry | **REGISTERED (SYN-TD-008)** |
 
-> **Note:** `X402L`, `X402E`, `X402B`, `X402BN`, `X402BR`, `X402MR` are formally registered (IETF draft + Zenodo estate) but only `X402G`, `X402M`, `X402N`, `X402W` are in the live Delta production validator subset. The full 10-code grammar is the protocol standard.
+> **Note:** `X402L`, `X402E`, `X402B`, `X402BN`, `X402BR`, `X402MR`, `X402Z`, `X402R` are formally registered (IETF draft + Zenodo estate) but currently `X402G`, `X402M`, `X402N`, `X402W` compose the live Delta production validator subset. The complete 12-code grammar forms the full institutional wire protocol standard.
 
 ---
 
@@ -310,6 +316,44 @@ receipt = "SYN-R16-LEAF-v1"      (15 bytes, ASCII)
 
 - The leaf is Ed25519-signed by the custodian (64-byte detached signature, RFC 8032).  
 - The fold chain (§4.4) accumulates leaves into the session audit root.
+
+---
+
+#### X402Z — Zero-Knowledge State Attestation & Knowledge Object (ZKO)
+
+```abnf
+x402z-payload   = "X402Z:" hex16 ":" hex32 ":" hex32
+                ; "X402Z:" proof-id ":" nullifier ":" state-root
+```
+
+**Semantics:**  
+- Verifies a Zero-Knowledge Knowledge Object (ZKO) asserting off-chain legal title, solvency range, or regulatory compliance without disclosing sensitive corporate data.
+- `proof-id`: 16-byte (32-hex) identifier of the verifying proof circuit or verification key (e.g. Groth16, Plonk, or Token-2022 Bulletproof range proof per SYN-TD-008).
+- `nullifier`: 32-byte (64-hex) unique cryptographic nullifier derived from the underlying asset serial and debtor secret key ($Nullifier = \text{SHA3-256}(SecretKey \parallel AssetSerial \parallel Corridor)$).
+  - **Double-Pledge Elimination:** On-chain programs maintain an append-only bitset/map of spent nullifiers. If the nullifier has already been committed in any historical session or active PTB, the transaction aborts with `ERROR_NULLIFIER_ALREADY_SPENT` (`0x50`). This mathematically eliminates double-pledging of physical invoices, bills of lading, or warehouse receipts.
+- `state-root`: 32-byte (64-hex) Merkle root of the accredited legal/asset registry (e.g. UN/CEFACT MLETR registry, national land title database, or accredited invoice clearinghouse).
+- **Zero-leakage execution:** Verified in CPU cache via runtime memory introspection (`sysvar::instructions`). No public balance, invoice margin, or entity tax identifier is ever written to ledger state.
+
+---
+
+#### X402R — Real-World Asset (RWA) Lien Encumbrance
+
+```abnf
+x402r-payload   = "X402R:" asset-class ":" asset-id ":" hex32
+                ; "X402R:" asset-class ":" asset-id ":" commitment
+```
+
+**Semantics:**  
+- Programmatically locks, encumbers, or transfers a real-world legal lien or title claim in escrow against settlement funds.
+- `asset-class`: Standardized asset classification code:
+  - `INV`: Trade Finance Commercial Invoice
+  - `EBL`: Electronic Bill of Lading (MLETR compliant)
+  - `REC`: Accounts Receivable / Corporate Factoring
+  - `CO2`: Verified Carbon Credit Batch (e.g. AfriCredit)
+  - `CRE`: Commercial Real Estate Debt / Mortgages
+- `asset-id`: Legal asset identifier (e.g., registry serial number, D-U-N-S + invoice number).
+- `commitment`: 32-byte (64-hex) Pedersen commitment $T = r \cdot G + v \cdot H$ over the Ristretto255 curve concealing the exact valuation $v$ while asserting solvency against the downstream settlement debit (`X402W`).
+- **Atomic Title Perfection:** If the downstream settlement leg (`X402W`) succeeds, the lien is atomically perfected to the creditor or liquidity pool. If `X402W` aborts, the encumbrance unwinds in volatile memory instantly with zero residual cloud on title ($\Delta = 0$).
 
 ---
 
@@ -557,6 +601,31 @@ All three MUST produce the same root. A discrepancy in any one is a conformance 
 
 ---
 
+### Pattern 9: RWA-DvP (Atomic Real-World Asset Delivery-versus-Payment)
+
+**Use case:** Institutional factoring, commodity trade finance, and private credit clearing where physical or legal real-world asset (RWA) claims are exchanged simultaneously for settlement liquidity without public disclosure of commercial terms.  
+**ISO / Statutory analogy:** UNCITRAL Model Law on Electronic Transferable Records (MLETR), ISO 20022 `sese.023` (Securities Settlement Transaction), and UCC Article 9 electronic chattel paper perfection.  
+**Cryptographic anchor:** SYN-TD-008 (`10.5281/zenodo.23002720`) zero-knowledge balance encryption and Bulletproof range proofs.
+
+```
+PTB-RWA-DvP:
+  [0] X402G:<challenge>                          ;; gateway paywall / MCP metering
+  [1] X402Z:<proof_id>:<nullifier>:<state_root>  ;; ZK state attestation (proves ownership, title, & valuation range)
+  [2] X402R:<asset_class>:<asset_id>:<commitment>;; programmatically encumbers RWA lien / title claim in escrow
+  [3] X402L:<lane>:<window>:<n>                  ;; ADR-062 concurrent lane allocation
+  [4] X402E:<corridor>:<uetr>                    ;; binds ISO 20022 CBPR+ pacs.008 SWIFT payment tracking ID
+  [5] X402W:<session>:<debtor>                   ;; settles net liquidity disbursement (asserts Invariant 9)
+  [6] X402N:<session>:<net-amt>                  ;; emits immutable consensus receipt leaf binding cash & perfected lien
+```
+
+**Constraints & Execution Semantics:**
+- **Zero Double-Pledge Invariant:** Command [1] evaluates `<nullifier>`. If the nullifier exists in the on-chain nullifier bitset, the transaction aborts with `0x50` (`ERROR_NULLIFIER_ALREADY_SPENT`) before Command [2] attaches or any liquidity is touched.
+- **Atomic Lien Perfection:** Command [2] attaches a programmatic lien commitment ($T = r \cdot G + v \cdot H$) to the asset. The lien attaches **if and only if** Command [5] disburses liquidity successfully.
+- **Fail-Closed Rollback:** If Command [5] fails (e.g. liquidity shortage, sanctions breach, or Invariant 9 non-zero delta), Commands [2] and [1] roll back in memory instantly ($\Delta \equiv 0$). The debtor retains 100% unencumbered asset ownership; zero collateral remains stranded.
+- **AU-2 Regulatory Viewing Key Delegation:** The underlying invoice details, tax IDs, and exact trade margins are encrypted via twisted ElGamal over Curve25519 (SYN-TD-008 §2). Designated compliance authorities possessing the private viewing key can decrypt transaction details without public ledger leakage.
+
+---
+
 ## 6. PTB Composition Algebra
 
 ### 6.1 Sequential Composition
@@ -602,6 +671,8 @@ The rollback guarantee is not a try/catch — it is enforced by the ledger runti
 | C6 | `X402BN` and `X402BR` MUST NOT coexist in the same PTB |
 | C7 | A PTB MUST contain at least 1 command |
 | C8 | Max PTB depth = implementation-defined; RECOMMENDED minimum = 8 commands |
+| C9 | `X402Z` MUST precede `X402R` and `X402W` in any RWA settlement pipeline |
+| C10 | An `X402R` encumbrance MUST be succeeded by an atomic `X402W` settlement or explicitly roll back ($\Delta \equiv 0$) |
 
 ---
 
@@ -709,6 +780,8 @@ admin_receives    = 300,150,000
 | `seal_session` + audit_root | `ReportEntry` hash in `camt.053` Statement of Account |
 | `finalize_session` | `BatchBookg` = true in `pain.001` — net book confirmation |
 | Conservation invariant | `TtlNbOfTxs` + `CtrlSum` reconciliation in `pain.001.001.09` |
+| `X402Z` ZK State Proof | `sese.023` (Securities Settlement Transaction Confirmation) / UNCITRAL MLETR §10 |
+| `X402R` RWA Lien | `camt.054` / UCC Article 9 Electronic Chattel Paper Lien Attachment |
 
 **UETR Format (normative):**
 ```
@@ -740,6 +813,15 @@ The FX-SARF pattern (Pattern 4) satisfies the two conditions of *Bay' al-Sarf*:
 ### 10.4 Yadan bi-Yadin (Hand-to-Hand)
 
 The PTB atomicity is the digital implementation of *Yadan bi-Yadin* — "hand-to-hand" simultaneous exchange. The atomic rollback guarantee (§6.3) means there is no scenario where Party A delivers without Party B delivering in the same transaction block. Bridge-based or sequential-transaction approaches cannot satisfy *Yadan bi-Yadin* because the inter-transaction gap creates a window of unilateral exposure.
+
+### 10.5 Tangible Real-Asset Backing (Mal Mutaqawwim)
+
+In Islamic commercial law (Fiqh al-Mu'amalat), a valid trade or financing contract (e.g. *Murabaha*, *Salam*, *Istisna'a*, or *Ijarah*) requires the existence of real, identifiable, legally owned, and unencumbered subject matter (*Mal Mutaqawwim*). Purely synthetic financial derivatives, unbacked debts traded for debt (*Bay' al-Kali bi-al-Kali*), and fractional reserves without underlying physical assets are strictly impermissible.
+
+The combination of `X402R` and `X402Z` establishes mathematical compliance with *Mal Mutaqawwim*:
+1. **Asset Tangibility Proof:** `X402R` requires an accredited asset classification (`INV`, `EBL`, `REC`, `CO2`, `CRE`) and legal registry identifier.
+2. **Title Verification Without Usury:** `X402Z` verifies the unencumbered ownership of the physical asset via non-interactive zero-knowledge proofs.
+3. **Prevention of Fictitious Trade Financing:** The nullifier mechanism in `X402Z` prevents the same physical commodity or invoice from being financed more than once (eliminating duplicate *Murabaha* pledge fraud, historically a persistent issue in Islamic trade banking).
 
 ---
 
