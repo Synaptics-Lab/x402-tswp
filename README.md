@@ -11,7 +11,7 @@
 [![IANA ALPN](https://img.shields.io/badge/IANA%20ALPN-x402%20%26%20tswp-darkblue.svg)](ietf/IETF_ANNOUNCEMENT_AND_IANA_REGISTRATION.md)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 
-### CERN Zenodo Defensive Patent Portfolio (14 Registered DOIs)
+### CERN Zenodo Defensive Patent Portfolio (15 Registered DOIs)
 [![DOI: SYN-TD-2026-001](https://zenodo.org/badge/DOI/10.5281/zenodo.22979715.svg)](https://doi.org/10.5281/zenodo.22979715)
 [![DOI: SYN-TD-2026-002](https://zenodo.org/badge/DOI/10.5281/zenodo.22983522.svg)](https://doi.org/10.5281/zenodo.22983522)
 [![DOI: SYN-TD-2026-003](https://zenodo.org/badge/DOI/10.5281/zenodo.22994745.svg)](https://doi.org/10.5281/zenodo.22994745)
@@ -26,6 +26,7 @@
 [![DOI: SYN-TD-2026-012](https://zenodo.org/badge/DOI/10.5281/zenodo.23041137.svg)](https://doi.org/10.5281/zenodo.23041137)
 [![DOI: SYN-TD-2026-013](https://zenodo.org/badge/DOI/10.5281/zenodo.23041557.svg)](https://doi.org/10.5281/zenodo.23041557)
 [![DOI: SYN-TD-2026-014](https://zenodo.org/badge/DOI/10.5281/zenodo.23041910.svg)](https://doi.org/10.5281/zenodo.23041910)
+[![DOI: SYN-TD-2026-015](https://zenodo.org/badge/DOI/10.5281/zenodo.23042571.svg)](https://doi.org/10.5281/zenodo.23042571)
 
 An extensible, byte-exact state-machine grammar and multi-rail transport protocol for machine-to-machine (M2M) micropayments, collateralization, and multilateral netting settlements.
 
@@ -81,6 +82,7 @@ X402 type discriminators chain sequentially inside a single Programmable Transac
 ## Core Specifications
 
 - [**SYN-FPS-2026-001: Financial PTB Wire Standard (SYN-TD-011)**](docs/SYN-FPS-2026-001-FINANCIAL-PTB-WIRE-STANDARD.md) — [DOI 10.5281/zenodo.23038493](https://doi.org/10.5281/zenodo.23038493): Extended institutional finance protocol language, 9 banking patterns (DvP, FX-SARF, MNC, CRW, BSS, DNS, GTA, MEO, RWA-DvP), PTB composition algebra, Invariant 9 continuous solvency conservation, and ISO 20022 / Shariah compliance mappings.
+- [**SYN-TD-2026-015: Tanzania Sovereign DPI Blotter Blueprint**](docs/TANZANIA_SOVEREIGN_DPI_BLOTTER_BLUEPRINT.md) — [DOI 10.5281/zenodo.23042571](https://doi.org/10.5281/zenodo.23042571): Digital Public Infrastructure payment rail, common-carrier USSD (*999#), Invariant 9 real-time 18 bps fiscal split to TRA TSA, and multi-trillion TZS float sovereignty.
 - [**SYN-TD-2026-014: Off-Grid LoRa Mesh DTN Wire Framing**](docs/TECHNICAL_DISCLOSURE_OFFGRID_LORA_MESH.md) — [DOI 10.5281/zenodo.23041910](https://doi.org/10.5281/zenodo.23041910): Delay-tolerant sovereign financial settlement over uncoordinated Sub-GHz LoRa mesh radio (868/915 MHz), 144-byte unfragmented binary framing (`X402LORA`), and 256-lane off-grid double-spend prevention.
 - [**SYN-TD-2026-013: Mobile P2P Low-Bandwidth Settlement Framing**](docs/TECHNICAL_DISCLOSURE_MOBILE_P2P_LOW_BANDWIDTH.md) — [DOI 10.5281/zenodo.23041557](https://doi.org/10.5281/zenodo.23041557): Ultra-low-bandwidth P2P settlement for constrained mobile devices, 2G/3G SMS (3GPP TS 23.038), USSD, NFC, and BLE sub-160B operational codecs (`X402G`, `X402L`, `X402W`, `X402E`).
 - [**SYN-TD-2026-012: ZKO State Attestation & RWA Atomic DvP**](docs/TECHNICAL_DISCLOSURE_ZKO_RWA_ATOMIC_DVP.md) — [DOI 10.5281/zenodo.23041137](https://doi.org/10.5281/zenodo.23041137): Zero-Knowledge state attestation (`X402Z`) and programmatic RWA legal lien encumbrance (`X402R`) with atomic Delivery-versus-Payment clearing.

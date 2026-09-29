@@ -3,7 +3,8 @@
 
 **Technical Disclosure Identifier:** `SYN-TD-2026-015`  
 **Document Identifier:** `SYN-DPI-TZA-2026-001`  
-**Permanent DOI:** Pending Registration (`10.5281/zenodo.xxxxxxx`)  
+**Permanent DOI:** [**`10.5281/zenodo.23042571`**](https://doi.org/10.5281/zenodo.23042571)  
+**Zenodo Record:** [**`https://zenodo.org/records/23042571`**](https://zenodo.org/records/23042571)  
 **Parent Master Umbrella DOI:** [**`10.5281/zenodo.23000701`**](https://doi.org/10.5281/zenodo.23000701) (`SYN-TD-2026-006`)  
 **Base Wire Standard Linkage:** [`SYN-FPS-2026-001`](https://doi.org/10.5281/zenodo.23038493) (`SYN-TD-2026-011`)  
 **Mobile Wire Linkage:** [`SYN-TD-2026-013`](https://doi.org/10.5281/zenodo.23041557)  
