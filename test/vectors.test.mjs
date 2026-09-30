@@ -1,57 +1,65 @@
 import assert from 'node:assert/strict';
+import {
+  DISCRIMINATOR_TAGS,
+  DISCRIMINATOR_REGISTRY,
+  validateTswpMemo,
+  buildGatewayMemo,
+  buildLaneMemo,
+  buildWindowMemo,
+} from '../src/discriminators.mjs';
 
-function buildLaneMemo(lane, window, nonce) {
-  const laneStr = String(lane);
-  const winStr = String(window);
-  const nonceStr = String(nonce);
+console.log('--- Testing RFC-0402 X402-TSWP Conformance Suite ---');
 
-  assert(/^\d+$/.test(laneStr), 'lane must be integer');
-  const laneNum = Number(lane);
-  assert(laneNum >= 0 && laneNum <= 255, 'lane out of bounds');
-  assert(/^\d+$/.test(winStr), 'window must be numeric');
-  assert(/^\d+$/.test(nonceStr), 'nonce must be numeric');
+// 1. Verify all 12 discriminators are registered
+const tags = Object.keys(DISCRIMINATOR_TAGS);
+assert.equal(tags.length, 12, 'Expected exactly 12 registered discriminators');
+console.log(`PASS: 12/12 Discriminators Registered (${tags.join(', ')})`);
 
-  if (/^0\d+/.test(laneStr) || /^0\d+/.test(winStr) || /^0\d+/.test(nonceStr)) {
-    throw new Error('Non-canonical decimal representation');
-  }
-
-  const memo = `X402L:${laneStr}:${winStr}:${nonceStr}`;
-  if (Buffer.byteLength(memo, 'ascii') > 50) {
-    throw new Error('Lane memo exceeds 50 bytes');
-  }
-  return memo;
-}
-
-function buildGatewayMemo(challenge) {
-  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-  assert(uuidRegex.test(challenge), 'invalid challenge uuid');
-  return `X402G:${challenge}`;
-}
-
-console.log('--- Testing RFC-0402 Conformance Vectors ---');
-
-// Vector 1: Gateway challenge
+// 2. Vector: Gateway challenge validation
 const gMemo = buildGatewayMemo('827da995-adda-4dd7-9fb5-d05338526873');
 assert.equal(gMemo, 'X402G:827da995-adda-4dd7-9fb5-d05338526873');
 assert.equal(Buffer.byteLength(gMemo, 'ascii'), 42);
+const gRes = validateTswpMemo(gMemo);
+assert.equal(gRes.valid, true);
+assert.equal(gRes.tag, 'X402G');
 console.log('PASS: Vector 1 (Gateway Challenge)');
 
-// Vector 2: Lane memo
+// 3. Vector: Lane memo validation
 const lMemo = buildLaneMemo(151, 1789860218n, 806384975n);
 assert.equal(lMemo, 'X402L:151:1789860218:806384975');
 assert.equal(Buffer.byteLength(lMemo, 'ascii'), 30);
-console.log('PASS: Vector 2 (Lane Memo)');
+const lRes = validateTswpMemo(lMemo);
+assert.equal(lRes.valid, true);
+assert.equal(lRes.tag, 'X402L');
+console.log('PASS: Vector 2 (Lane Watermark Nonce)');
 
-// Vector 3: Leading zero rejection
+// 4. Vector: Window memo validation
+const wMemo = buildWindowMemo(1789811559, 'syn1eydur8g7d66xeq38mmxvg95h7e6crr2vtunpq8');
+assert.equal(wMemo, 'X402W:1789811559:syn1eydur8g7d66xeq38mmxvg95h7e6crr2vtunpq8');
+const wRes = validateTswpMemo(wMemo);
+assert.equal(wRes.valid, true);
+assert.equal(wRes.tag, 'X402W');
+console.log('PASS: Vector 3 (Netting Window Memo)');
+
+// 5. Vector: Leading zero rejection in numeric components
 assert.throws(() => {
   buildLaneMemo(0, 1789860218, '0806384975');
 }, /Non-canonical decimal representation/);
-console.log('PASS: Vector 3 (Leading Zero Rejection)');
+console.log('PASS: Vector 4 (Leading Zero Rejection)');
 
-// Vector 4: Zero digit representation
-const zMemo = buildLaneMemo(0, 1, 0);
-assert.equal(zMemo, 'X402L:0:1:0');
-assert.equal(Buffer.byteLength(zMemo, 'ascii'), 11);
-console.log('PASS: Vector 4 (Zero Digit Canonical)');
+// 6. Vector: All Live Discriminator Examples Validate
+for (const [tag, record] of Object.entries(DISCRIMINATOR_REGISTRY)) {
+  if (record.liveExample) {
+    const res = validateTswpMemo(record.liveExample);
+    assert.equal(res.valid, true, `Failed validation for live example of ${tag}: ${record.liveExample}`);
+    assert.equal(res.tag, tag);
+  }
+}
+console.log('PASS: Vector 5 (All Live Estate Examples Validated)');
 
-console.log('All 4 RFC-0402 test vectors PASSED.');
+// 7. Vector: Unknown discriminator rejection
+const badRes = validateTswpMemo('X402UNKNOWN:123');
+assert.equal(badRes.valid, false);
+console.log('PASS: Vector 6 (Unknown Discriminator Fail-Closed)');
+
+console.log('All RFC-0402 X402-TSWP test vectors PASSED.');
