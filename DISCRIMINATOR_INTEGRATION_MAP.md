@@ -11,7 +11,7 @@
 
 This document establishes the **authoritative boundary between live on-chain/gateway discriminators and standards-track protocol specifications**. 
 
-Historically, memo formats were documented as prose across multiple disparate modules (`apps/colosseum/lib/memos.ts`, `gateway.mjs`, `escrow-server/index.mjs`). This document and its companion module (`apps/x402-tswp/src/discriminators.mjs`) consolidate all 12 operational discriminators into a **single, typed, importable source of truth**.
+Historically, memo formats were documented as prose across multiple disparate modules (`apps/colosseum/lib/memos.ts`, `gateway.mjs`, `escrow-server/index.mjs`). This document and its companion module (`apps/x402-tswp/src/discriminators.mjs` / `apps/colosseum/lib/memos.ts`) consolidate all 12 operational discriminators into a **single, typed, importable source of truth**.
 
 ---
 
@@ -31,6 +31,8 @@ Historically, memo formats were documented as prose across multiple disparate mo
 | **`X402L`** | `X402L:<lane>:<window>:<nonce>`| 🔵 **STANDARDS_TRACK** | Solana Devnet, Synaptic L1 | IETF RFC Track / Solana SIMD-0671 | `X402L:151:1789860218:806384975` (Parametric 256-lane watermark) |
 | **`X402Z`** | `X402Z:<root>:<proof>` | 🔵 **STANDARDS_TRACK** | Synaptic L1, XRPL Altnet | CERN Zenodo SYN-TD-008 & SYN-TD-012 | Zero-Knowledge confidential clearing attestation |
 | **`X402R`** | `X402R:<session>:<reason>` | 🔵 **STANDARDS_TRACK** | XRPL Altnet, Synaptic L1 | CERN Zenodo SYN-TD-001 | Honest-rejection cryptographic dispute proof |
+| **`X402P`** | `X402P:<uetr>:<msg_id>:<minor_amount>:<tsa_bps>[:<ats_root>]`| 🟡 **LIVE_GATEWAY** | Solana Devnet | `synaptic-fx-terminal` desk settler (F-19 SSOT convergence, UTA-2026-10-03-001) | Desk pacs.008 settlement frame — FI-to-FI Token-2022 transfer bound to UETR + msg id + minor units + TSA bps |
+| **`X402A`** | `X402A:<asset>:<mint>:<decimals>` | 🔵 **STANDARDS_TRACK** | Solana Devnet, Synaptic L1 | SEP-0001 (Synaptics-Lab/x402-tswp) / asset registry | Issuer-agnostic instrument binding — inaugural registration **OUSD**: `X402A:OUSD:ousd2mJsPEckLHcSCDxyKD7NDGARZcfLbDZkKiatYHB:6` (Open Standard, mainnet Token-2022 mint, RPC-verified 2026-10-07: owner `TokenzQdBN…EuEb`, decimals 6, supply 69,811,167.77; issuer holds freeze + pause + permanent-delegate authorities) |
 
 ---
 
@@ -46,6 +48,7 @@ export const MEMO_GRAMMAR = Object.values(DISCRIMINATOR_REGISTRY).map(entry => (
   memo: entry.syntax,
   where: entry.service,
   carries: entry.description,
+  status: entry.status,
   liveExample: entry.liveExample,
   exampleSource: entry.status,
 }));
@@ -66,6 +69,6 @@ if (!valid) {
 
 ## 4. Key Takeaways for Server Agent (`root@delta`)
 
-1. **Do Not Re-invent the Grammar:** All 12 discriminators are locked in `apps/x402-tswp/src/discriminators.mjs`.
+1. **Do Not Re-invent the Grammar:** All 12 discriminators are locked and tested in `apps/x402-tswp/src/discriminators.mjs` and `apps/colosseum/lib/memos.ts`.
 2. **Current Master Commit:** Ensure your local branch is synchronized via `git pull --rebase origin master`.
 3. **Live Daemons:** Delta PM2 services `:8402` (`x402-gateway`), `:8405` (`mcp-402-gateway-escrow`), and `:8415` (`synaptic-traderx-adapter`) must run against these exact regex definitions.
