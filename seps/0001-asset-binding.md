@@ -5,7 +5,7 @@
 - **Created**: 2026-10-07
 - **Author(s)**: Abdul Shabazz (@veritasvaultone, Synaptics Lab) <veritasvaultone@gmail.com>
 - **Sponsor**: None
-- **PR**: (this PR)
+- **PR**: https://github.com/Synaptics-Lab/x402-tswp/pull/1
 - **Related Specs**: IETF draft-shabazz-http-x402-tswp-01; SEP-0000 (MCP-402, payment-gated tools); integration map (`DISCRIMINATOR_INTEGRATION_MAP.md` §2, X402A row)
 
 ---
