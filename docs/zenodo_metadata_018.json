@@ -1,0 +1,64 @@
+{
+  "title": "System, Method, and Cryptographic Escrow Protocol for Bilateral Foreign Exchange Market-Making with Real-Time Performance Bond Escrows and Settlement-Evidence-Gated Release",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>A formal systems engineering and cryptographic protocol technical disclosure establishing defensive prior art under 35 U.S.C. § 102(a)(1) and EPC Article 54(2) for an on-chain Foreign Exchange (FX) Market-Maker Performance Bond Escrow and Continuous Linked Settlement (CLS) clearing protocol.</p><p>Addressing the fundamental vulnerability of counterparty delivery default (Herstatt risk) in cross-border decentralized finance and Request-for-Quote (RFQ) markets—where liquidity makers stream uncollateralized quotes and can abandon execution during adverse price swings without economic penalty—this specification discloses a real-time, evidence-gated margin clearing protocol: (1) An authorized market maker must lock an immutable performance bond on an external ledger (e.g., XRP Ledger EscrowCreate) to an independent custodian prior to quote publication, embedding a domain-separated corridor linkage memo (X402M:corridor:maker); (2) An on-chain market contract (CorridorMarket.syn) records the quote on Layer-1 only upon registering the validated escrow transaction hash and sequence number, enabling downstream gateways to expose verified pricing metadata (margin_verified: true, fx_rate_source: 'market: <maker_address>'); (3) Collateral release is decoupled from time-locks (CancelAfter expiries) and third-party oracles, evaluating strictly on-chain ISO 20022 pacs.002 Acsc (Accepted Settlement Completed) payment status receipts anchored to consensus blocks; (4) Release requests referencing missing or unconfirmed settlement evidence fail closed (release_refused: evidence_missing); and (5) Upon verification of genuine settlement finality, the custodian executes an on-chain escrow finish transaction that atomically returns the locked margin in full to the maker and deletes the escrow object from the ledger state tree (escrow_gone=true).</p><p>The specification establishes mathematical and architectural symmetry between consumer API execution bonds and market-maker quotation margins, providing an institutional, collateralized foundation for bilateral agentic clearing across decentralized networks.</p>",
+  "creators": [
+    {
+      "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "Continuous Linked Settlement",
+    "CLS",
+    "Herstatt Risk",
+    "Market Maker Margin",
+    "Performance Bond",
+    "Escrow",
+    "XRPL",
+    "CorridorMarket",
+    "ISO 20022",
+    "pacs.002",
+    "Acsc Finality",
+    "Evidence Gate",
+    "Cross-Ledger Settlement",
+    "Defensive Prior Art",
+    "35 U.S.C. 102",
+    "EPC Art 54"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isPartOf",
+      "identifier": "10.5281/zenodo.23000701",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23136053",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23038493",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22994745",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22996200",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    }
+  ]
+}

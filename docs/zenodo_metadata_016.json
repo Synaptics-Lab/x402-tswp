@@ -1,0 +1,72 @@
+{
+  "title": "System, Method, and Cryptographic Wire Protocol for Zero-Custody Autonomous Agent Settlement via Pre-Flight Enclave Attestation and Mandated Custodian Sweeps (ADR-555 Keyless Execution)",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>A formal systems architecture and cryptographic wire protocol technical disclosure establishing defensive prior art under 35 U.S.C. § 102(a)(1) and EPC Article 54(2) for zero-custody autonomous agent execution across multi-ledger settlement clearinghouses.</p><p>Addressing the critical vulnerabilities of autonomous AI agents in financial markets—specifically container private key exfiltration, unbounded ERC-20/SPL approval drainage, and prompt-injection override exploits—this specification discloses a decoupled, fail-closed three-tier execution pipeline: (1) An autonomous agent operating with zero private keys (keys_held: false) constrained by rolling UTC calendar day budget ceilings; (2) A sub-8 millisecond hardware-isolated execution enclave evaluating unsigned payment intents in volatile memory against an exact mathematical solvency invariant (SigmaDebits == SigmaCredits + SigmaFees, Delta=0), an in-memory salted Bloom filter sanctions screen (m=2^20, k=7) executing pre-wire refusals in under 1.37ms, non-contending 256-lane nonce partition allocation, and Winternitz One-Time Signature (WOTS+ 67-chain) post-quantum state transition leaf derivation; (3) A fail-closed clearing desk verifying enclave attestation integrity and temporal freshness (|t_now - t_attest| <= 30.0s); (4) A hardware-secured estate custodian executing exactly one atomic settlement sweep on external ledgers (SPL Token-2022 transfer_checked on Solana with mandatory ExtensionType.MemoTransfer UETR enforcement, or XRPL Payment with invoice memo); and (5) Instruction-introspected delivery verification extracting delivered unit deltas directly from parsed virtual machine instruction bytes prior to releasing sovereign Layer-1 compensating assets at a deterministic basis-point spread.</p><p>The disclosure further codifies fail-closed cross-rail boundary protection (binding_drift_refused) halting execution before network dispatch when production asset mints are supplied to testing desk runtimes, guaranteeing complete isolation between external fact rows and active testnet settlement instruments.</p>",
+  "creators": [
+    {
+      "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "Zero Custody",
+    "Autonomous Agents",
+    "AI Agent Banking",
+    "ADR-555",
+    "Hardware Enclave",
+    "Solana Token-2022",
+    "MemoTransfer",
+    "XRPL",
+    "ISO 20022",
+    "SWIFT UETR",
+    "Bloom Filter",
+    "WOTS+",
+    "Post-Quantum Attestation",
+    "Instruction Introspection",
+    "Continuous Linked Settlement",
+    "Defensive Prior Art",
+    "35 U.S.C. 102",
+    "EPC Art 54"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isPartOf",
+      "identifier": "10.5281/zenodo.23000701",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23135960",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23136053",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22994745",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23038493",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22996200",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    }
+  ]
+}

@@ -11,7 +11,7 @@
 [![IANA ALPN](https://img.shields.io/badge/IANA%20ALPN-x402%20%26%20tswp-darkblue.svg)](ietf/IETF_ANNOUNCEMENT_AND_IANA_REGISTRATION.md)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 
-### CERN Zenodo Defensive Patent Portfolio (15 Registered DOIs)
+### CERN Zenodo Defensive Patent Portfolio (20 Registered DOIs)
 [![DOI: SYN-TD-2026-001](https://zenodo.org/badge/DOI/10.5281/zenodo.22979715.svg)](https://doi.org/10.5281/zenodo.22979715)
 [![DOI: SYN-TD-2026-002](https://zenodo.org/badge/DOI/10.5281/zenodo.22983522.svg)](https://doi.org/10.5281/zenodo.22983522)
 [![DOI: SYN-TD-2026-003](https://zenodo.org/badge/DOI/10.5281/zenodo.22994745.svg)](https://doi.org/10.5281/zenodo.22994745)
@@ -27,6 +27,11 @@
 [![DOI: SYN-TD-2026-013](https://zenodo.org/badge/DOI/10.5281/zenodo.23041557.svg)](https://doi.org/10.5281/zenodo.23041557)
 [![DOI: SYN-TD-2026-014](https://zenodo.org/badge/DOI/10.5281/zenodo.23041910.svg)](https://doi.org/10.5281/zenodo.23041910)
 [![DOI: SYN-TD-2026-015](https://zenodo.org/badge/DOI/10.5281/zenodo.23042571.svg)](https://doi.org/10.5281/zenodo.23042571)
+[![DOI: SYN-TD-2026-016](https://zenodo.org/badge/DOI/10.5281/zenodo.23226115.svg)](https://doi.org/10.5281/zenodo.23226115)
+[![DOI: SYN-TD-2026-017](https://zenodo.org/badge/DOI/10.5281/zenodo.23226067.svg)](https://doi.org/10.5281/zenodo.23226067)
+[![DOI: SYN-TD-2026-018](https://zenodo.org/badge/DOI/10.5281/zenodo.23226408.svg)](https://doi.org/10.5281/zenodo.23226408)
+[![DOI: SYN-TD-2026-019](https://zenodo.org/badge/DOI/10.5281/zenodo.23226479.svg)](https://doi.org/10.5281/zenodo.23226479)
+[![DOI: SYN-TD-2026-020](https://zenodo.org/badge/DOI/10.5281/zenodo.23226579.svg)](https://doi.org/10.5281/zenodo.23226579)
 
 An extensible, byte-exact state-machine grammar and multi-rail transport protocol for machine-to-machine (M2M) micropayments, collateralization, and multilateral netting settlements.
 
@@ -81,6 +86,11 @@ X402 type discriminators chain sequentially inside a single Programmable Transac
 
 ## Core Specifications
 
+- [**SYN-TD-2026-016: Zero-Custody Agent Settlement via Pre-Flight Enclave Attestation (ADR-555 Keyless Execution)**](docs/TECHNICAL_DISCLOSURE_KEYLESS_AGENT_CUSTODY_ENCLAVE_ATTESTATION.md) — [DOI 10.5281/zenodo.23226115](https://doi.org/10.5281/zenodo.23226115): Zero-custody autonomous agent execution across multi-ledger settlement clearinghouses, sub-8ms hardware enclave pre-flight gating, and mandated custodian sweeps.
+- [**SYN-TD-2026-017: Single-Call Zero-Seed Multi-Ledger Provisioning & Soulbound Attestation (ADR-888)**](docs/TECHNICAL_DISCLOSURE_ZERO_SEED_AGENT_ONBOARDING_PROTOCOL.md) — [DOI 10.5281/zenodo.23226067](https://doi.org/10.5281/zenodo.23226067): Zero-seed multi-ledger cryptographic provisioning across Bech32m, Base58 Solana, and XRPL, SynIdentityNFT minting, and McpLicenseNFT v3 detached signature gating.
+- [**SYN-TD-2026-018: Bilateral FX Market-Making with Performance Bond Escrows & Evidence-Gated Release**](docs/TECHNICAL_DISCLOSURE_MAKER_MARGIN_ESCROW_EVIDENCE_GATE.md) — [DOI 10.5281/zenodo.23226408](https://doi.org/10.5281/zenodo.23226408): Continuous Linked Settlement (CLS) eliminating Herstatt risk via XRPL performance bond escrows, CorridorMarket on-chain registration, and ISO 20022 pacs.002 Acsc evidence release.
+- [**SYN-TD-2026-019: Sovereign Stripe-Compatible PaymentIntent REST Emulator over Solana Token-2022 (syn-stripe-bridge)**](docs/TECHNICAL_DISCLOSURE_SOVEREIGN_STRIPE_SOLANA_BRIDGE.md) — [DOI 10.5281/zenodo.23226479](https://doi.org/10.5281/zenodo.23226479): Drop-in Stripe v1 REST API emulator (POST /v1/payment_intents) settling onto Solana Token-2022 with mandatory MemoTransfer covenants, 14-point CBPR+ pacs.008 XML, and HMAC-SHA256 webhooks.
+- [**SYN-TD-2026-020: Decoupled Multi-Ledger Settlement Architecture with Token-2022 Execution and SMR Audit Finality**](docs/TECHNICAL_DISCLOSURE_DECOUPLED_CLEARINGHOUSE_SMR_AUDIT_RAIL.md) — [DOI 10.5281/zenodo.23226579](https://doi.org/10.5281/zenodo.23226579): CPMI-IOSCO PFMI Principles 8 and 9 aligned multi-ledger clearinghouse decoupling Solana sub-400ms execution from sovereign 256-lane parallel SMR clearinghouse audit warehousing.
 - [**SYN-FPS-2026-001: Financial PTB Wire Standard (SYN-TD-011)**](docs/SYN-FPS-2026-001-FINANCIAL-PTB-WIRE-STANDARD.md) — [DOI 10.5281/zenodo.23038493](https://doi.org/10.5281/zenodo.23038493): Extended institutional finance protocol language, 9 banking patterns (DvP, FX-SARF, MNC, CRW, BSS, DNS, GTA, MEO, RWA-DvP), PTB composition algebra, Invariant 9 continuous solvency conservation, and ISO 20022 / Shariah compliance mappings.
 - [**SYN-TD-2026-015: Tanzania Sovereign DPI Blotter Blueprint**](docs/TANZANIA_SOVEREIGN_DPI_BLOTTER_BLUEPRINT.md) — [DOI 10.5281/zenodo.23042571](https://doi.org/10.5281/zenodo.23042571): Digital Public Infrastructure payment rail, common-carrier USSD (*999#), Invariant 9 real-time 18 bps fiscal split to TRA TSA, and multi-trillion TZS float sovereignty.
 - [**SYN-TD-2026-014: Off-Grid LoRa Mesh DTN Wire Framing**](docs/TECHNICAL_DISCLOSURE_OFFGRID_LORA_MESH.md) — [DOI 10.5281/zenodo.23041910](https://doi.org/10.5281/zenodo.23041910): Delay-tolerant sovereign financial settlement over uncoordinated Sub-GHz LoRa mesh radio (868/915 MHz), 144-byte unfragmented binary framing (`X402LORA`), and 256-lane off-grid double-spend prevention.

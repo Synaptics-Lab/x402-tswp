@@ -1,0 +1,67 @@
+{
+  "title": "System, Method, and Cryptographic Gateway for a Sovereign Stripe-Compatible PaymentIntent REST Emulator over Solana Token-2022 and ISO 20022 Multi-Ledger Clearing (syn-stripe-bridge)",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>A formal systems architecture and cryptographic protocol technical disclosure establishing defensive prior art under 35 U.S.C. § 102(a)(1) and EPC Article 54(2) for a sovereign, self-hostable Stripe v1 REST API emulator (POST /v1/payment_intents, GET /v1/payment_intents/:id, POST /v1/payment_intents/:id/confirm) settling over Solana Token-2022 and ISO 20022 clearinghouses.</p><p>Addressing the 2.9% + 30¢ credit card interchange tax, 2–3 business day settlement float, friendly-fraud chargebacks, and the fundamental exclusion of autonomous AI software agents from traditional banking KYC/EIN systems, this specification discloses: (1) A dual-mode wire demarshaller parsing both JSON and URL-encoded form data (application/x-www-form-urlencoded) matching official Stripe client SDKs (stripe-python, stripe-node); (2) Automatic RFC 4122 SWIFT Unique End-to-End Transaction Reference (UETR) allocation and deterministic intent mapping (pi_syn_<uetr_compact>); (3) An automated 14-point structural CBPR+ ISO 20022 pacs.008.001.08 XML synthesis and validation pipeline; (4) Sub-400ms atomic settlement execution on Solana Token-2022 enforcing SPL Memo v2 covenants (ExtensionType.MemoTransfer) at the virtual machine instruction level (TokenError::NoMemo 0x24 abort on missing memo); (5) ISO 20022 pacs.002.001.12 Acsc (Accepted Settlement Completed) finality receipt anchoring; and (6) HMAC-SHA256 signed Stripe Webhook event delivery (payment_intent.succeeded) verifiable by standard Stripe webhook verification handlers.</p><p>The specification further establishes direct 1:1 isomorphism between FINOS FDC3 3.0 StartPayment intents (PR #2204), Stripe PaymentIntent objects, and ISO 20022 wires, enabling a single configuration change (stripe.api_base = 'https://bridge.synapticchain.xyz/v1') to route Web2 checkouts and autonomous agent micropayments into sub-cent Solana Token-2022 finality.</p>",
+  "creators": [
+    {
+      "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "Stripe API",
+    "PaymentIntent",
+    "Solana",
+    "Token-2022",
+    "MemoTransfer",
+    "RequiredMemoTransfers",
+    "ISO 20022",
+    "pacs.008",
+    "pacs.002",
+    "CBPR+",
+    "SWIFT UETR",
+    "FINOS FDC3",
+    "PR 2204",
+    "AI Agent Payments",
+    "Webhooks",
+    "HMAC-SHA256",
+    "Defensive Prior Art",
+    "35 U.S.C. 102",
+    "EPC Art 54"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isPartOf",
+      "identifier": "10.5281/zenodo.23000701",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22979715",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22983522",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23002617",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "isSupplementedBy",
+      "identifier": "https://github.com/Synaptics-Lab/syn-stripe-bridge",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ]
+}

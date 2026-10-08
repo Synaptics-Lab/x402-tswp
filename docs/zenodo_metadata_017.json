@@ -1,0 +1,59 @@
+{
+  "title": "Single-Call Zero-Seed Multi-Ledger Cryptographic Provisioning, Soulbound Credential Attestation, and Tiered License Gating Protocol for Autonomous AI Agents (ADR-888)",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>A formal systems engineering and cryptographic protocol technical disclosure establishing defensive prior art under 35 U.S.C. § 102(a)(1) and EPC Article 54(2) for a zero-configuration autonomous software agent onboarding, multi-rail cryptographic provisioning, and on-chain credential attestation architecture.</p><p>Addressing the onboarding barriers in Web3 machine-to-machine (M2M) and AI agent commerce—namely manual seed phrase management, interactive browser wallet requirements, heterogeneous testnet faucet hunting latency, and persistent bearer token vulnerabilities—this specification discloses a unified, single-endpoint provisioning protocol operating in under four seconds (T_onboard < 4.0s): (1) Single-seed Ed25519 deterministic key derivation across three heterogeneous cryptographic curves and address encodings (Bech32m SynapticChain L1, Base58 Solana Devnet, and Base58Check Ripple Classic XRPL); (2) Root-authorized administrative minting of non-transferable soulbound identity credentials (SynIdentityNFT) bound to the agent's Layer-1 address; (3) On-chain Trusted Agent Protocol (TAP) registration in AgentRegistry enforcing automated daily and per-transaction spending limit governance; (4) Synchronous heterogeneous tri-rail capital disbursement from custodian reserves funding native gas (0.5 SYN), working capital (0.5 sUSD), Solana lamports (0.01 SOL), and XRPL drops (2.0 XRP) in a single atomic flow; and (5) Issuance of an on-chain compute license (McpLicenseNFT v3) authorizing access to an 11-server Model Context Protocol (MCP) fleet via six detached Ed25519 request headers binding an ephemeral challenge, tool identifier, and agent identity (sha256('challenge:tool:agent')), eliminating static API keys and persistent credential theft.</p>",
+  "creators": [
+    {
+      "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "Autonomous Agent Onboarding",
+    "ADR-888",
+    "Soulbound Identity",
+    "SynIdentityNFT",
+    "TAP Protocol",
+    "AgentRegistry",
+    "Spending Limits",
+    "Multi-Rail Key Derivation",
+    "QuantumShield",
+    "Solana",
+    "XRPL",
+    "SynapticChain L1",
+    "McpLicenseNFT",
+    "Detached Signatures",
+    "Defensive Prior Art",
+    "35 U.S.C. 102",
+    "EPC Art 54"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isPartOf",
+      "identifier": "10.5281/zenodo.23000701",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22994745",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23038493",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22996200",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    }
+  ]
+}

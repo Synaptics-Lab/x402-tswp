@@ -2,10 +2,30 @@
   "title": "SynapticChain: A Stateless Edge-Settlement Layer-1 Blockchain Architecture Utilizing SCBFT and X402-TSWP Integration",
   "upload_type": "publication",
   "publication_type": "technicalnote",
-  "description": "<p>A master technical disclosure and defensive patent specification establishing prior art for the overarching system architecture of SynapticChain, a Layer-1 distributed ledger technology optimized for stateless edge-settlement. Unlike traditional blockchain architectures that rely on stateful, Turing-complete virtual machines (smart contracts) to process compliance and application logic, SynapticChain pushes computational execution to off-chain cryptographic enclaves. The blockchain functions exclusively as a deterministic state-transition matrix, processing cryptographically attested multi-instruction envelopes via Sovereign Consensus Byzantine Fault Tolerance (SCBFT).</p><p>Features native ALPN X402 Typed Settlement Wire Protocol (X402-TSWP) ingestion, ADR-062 256-lane partition allocation via rendezvous hashing, and instruction introspection runtime aborts (0x24) enforcing Mantis Invariant 9 (SigmaDebits == SigmaCredits, Delta=0). Establishes absolute defensive prior art under 35 U.S.C. § 102(a)(1) and EPC Article 54(2) pre-empting competitor claims on stateless edge-settlement Layer-1 blockchains.</p>",
+  "description": "<p>A master technical disclosure and defensive patent specification establishing prior art for the overarching system architecture of SynapticChain, a Layer-1 distributed ledger technology optimized for stateless edge-settlement and sovereign multi-ledger clearinghouse auditing. Unlike traditional blockchain architectures that rely on stateful, Turing-complete virtual machines (smart contracts) to process compliance and application logic, SynapticChain pushes computational execution to off-chain cryptographic enclaves. The blockchain functions exclusively as a deterministic state-transition matrix and independent clearinghouse SMR, processing cryptographically attested multi-instruction envelopes via Sovereign Consensus Byzantine Fault Tolerance (SCBFT).</p><p>Features native ALPN X402 Typed Settlement Wire Protocol (X402-TSWP) ingestion, ADR-062 256-lane partition allocation via rendezvous hashing, sub-8ms ADR-555 Enclave pre-flight gating, sub-400ms Continuous Atomic Netting (CAN), zero-seed autonomous agent onboarding (ADR-888), sovereign Stripe v1 REST emulation over Solana Token-2022 (syn-stripe-bridge), and CPMI-IOSCO PFMI decoupled clearinghouse SMR auditing. Establishes absolute defensive prior art under 35 U.S.C. § 102(a)(1) and EPC Article 54(2) pre-empting competitor claims across stateless edge-settlement Layer-1 blockchains and autonomous agent clearing rails.</p>",
   "creators": [
     {
       "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    },
+    {
+      "name": "Rogers, Trevin",
+      "affiliation": "Synaptics Lab"
+    },
+    {
+      "name": "Words, Janice",
+      "affiliation": "Synaptics Lab"
+    },
+    {
+      "name": "Synaptics Lab",
+      "affiliation": "Synaptics Lab"
+    },
+    {
+      "name": "Rogers-Shabazz, Noah",
+      "affiliation": "Synaptics Lab"
+    },
+    {
+      "name": "Holliday, Frederick-Emmanuel",
       "affiliation": "Synaptics Lab"
     }
   ],
@@ -19,46 +39,114 @@
     "Stateless Execution",
     "Smart Contract Security",
     "FINOS",
+    "Solana",
+    "Token-2022",
+    "Continuous Atomic Netting",
+    "Autonomous Agents",
+    "Stripe API",
+    "ISO 20022",
+    "CPMI-IOSCO",
+    "Clearinghouse SMR",
     "Defensive Prior Art",
     "35 U.S.C. 102",
     "EPC Art 54"
   ],
   "related_identifiers": [
     {
-      "relation": "references",
       "identifier": "10.5281/zenodo.22979715",
-      "scheme": "doi",
-      "resource_type": "publication-technicalnote"
+      "relation": "references",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
     },
     {
-      "relation": "references",
       "identifier": "10.5281/zenodo.22983522",
-      "scheme": "doi",
-      "resource_type": "publication-technicalnote"
+      "relation": "references",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
     },
     {
-      "relation": "references",
       "identifier": "10.5281/zenodo.22994745",
-      "scheme": "doi",
-      "resource_type": "publication-technicalnote"
+      "relation": "references",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
     },
     {
-      "relation": "references",
       "identifier": "10.5281/zenodo.22996200",
-      "scheme": "doi",
-      "resource_type": "publication-technicalnote"
-    },
-    {
       "relation": "references",
-      "identifier": "10.5281/zenodo.22996628",
-      "scheme": "doi",
-      "resource_type": "publication-technicalnote"
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
     },
     {
-      "relation": "isSupplementedBy",
+      "identifier": "10.5281/zenodo.22996628",
+      "relation": "references",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23002617",
+      "relation": "hasPart",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23002720",
+      "relation": "hasPart",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23002771",
+      "relation": "hasPart",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23003928",
+      "relation": "hasPart",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23038493",
+      "relation": "hasPart",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23041137",
+      "relation": "hasPart",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23041910",
+      "relation": "hasPart",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23042571",
+      "relation": "hasPart",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23135960",
+      "relation": "hasPart",
+      "resource_type": "publication-technicalnote",
+      "scheme": "doi"
+    },
+    {
       "identifier": "https://github.com/Synaptics-Lab/x402-tswp",
-      "scheme": "url",
-      "resource_type": "software"
+      "relation": "isSupplementedBy",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/Synaptics-Lab/syn-stripe-bridge",
+      "relation": "isSupplementedBy",
+      "resource_type": "software",
+      "scheme": "url"
     }
   ]
 }

@@ -1,0 +1,61 @@
+{
+  "title": "Decoupled Multi-Distributed-Ledger Settlement Architecture with High-Speed Token-2022 Execution Rails and Sovereign Clearinghouse State Machine Replication (SMR) Audit Finality (CPMI-IOSCO PFMI Aligned)",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>A formal systems engineering and distributed systems technical disclosure establishing defensive prior art under 35 U.S.C. § 102(a)(1) and EPC Article 54(2) for a decoupled multi-ledger settlement clearinghouse architecture that separates high-throughput transaction execution from sovereign clearinghouse audit finality.</p><p>Addressing the state rent and validator memory bloat caused by archiving multi-kilobyte regulatory XML messages (ISO 20022 pacs.008, pacs.002, camt.053) on execution chains, the inability of single execution networks to introspect heterogeneous counterparties (cross-rail blindness across Solana and XRPL), and regulatory mandates under CPMI-IOSCO Principles for Financial Market Infrastructures (PFMI Principles 8 and 9) requiring non-correlated settlement finality records, this specification discloses: (1) A three-tier clearing pipeline comprising an ultra-high-speed execution tier (Solana Token-2022 sub-400ms slots with ExtensionType.MemoTransfer covenants); (2) An independent desk clearing tier evaluating Continuous Atomic Netting (CAN) and raw instruction byte preimages; (3) A sovereign 256-lane parallel clearinghouse State Machine Replication (SMR) tier (Synaptic L1) providing zero-rent dual-ledger XML document warehousing (RocksDB + LMDB/QMDB); and (4) An immutable multi-rail settlement finality registry persisting pacs.002 Acsc state roots independently of execution venue software halts or reorgs.</p>",
+  "creators": [
+    {
+      "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "CPMI-IOSCO",
+    "PFMI",
+    "Clearinghouse",
+    "State Machine Replication",
+    "SMR",
+    "Solana",
+    "Token-2022",
+    "SynapticChain L1",
+    "256-Lane Parallel",
+    "ISO 20022",
+    "pacs.002",
+    "Acsc Finality",
+    "State Rent",
+    "Dual-Ledger",
+    "Continuous Netting",
+    "Settlement Finality",
+    "Defensive Prior Art",
+    "35 U.S.C. 102",
+    "EPC Art 54"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isPartOf",
+      "identifier": "10.5281/zenodo.23000701",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23002617",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23003928",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22994745",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    }
+  ]
+}

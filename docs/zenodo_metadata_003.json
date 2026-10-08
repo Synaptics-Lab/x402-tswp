@@ -1,0 +1,41 @@
+{
+  "title": "System, Method, and Cryptographic Protocol for Bridge-Free Trilateral Multi-Rail Settlement with Post-Quantum Hash-Attested State Anchoring and Canonical Instruction Introspection",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>A technical disclosure and defensive patent specification for the SynapticChain Bridge-Free Trilateral Native Multi-Rail Settlement Protocol and WOTS+ Sovereign Shield. Eliminates cross-chain wrapped asset bridges and custodial smart contract honeypots by executing native base-asset settlement across Solana (Token-2022 RequiredMemoTransfers with consensus abort 0x24), XRP Ledger (DENSE-16 SHAMap memo transactions), and SynapticChain L1 (256-lane SCBFT sovereign consensus). Anchors trilateral clearing states against Shor's quantum cryptanalysis using a 67-chain Winternitz One-Time Signature (WOTS+, RFC 8391) post-quantum checkpoint leaf bound to continuous multilateral netting windows. Establishes absolute defensive prior art under 35 U.S.C. § 102(a)(1) and EPC Article 54(2).</p>",
+  "creators": [
+    {
+      "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    },
+    {
+      "name": "Rogers, Carl",
+      "affiliation": "Synaptics Lab"
+    },
+    {
+      "name": "Shabazz, Free",
+      "affiliation": "Synaptics Lab"
+    },
+    {
+      "name": "Words, Janice",
+      "affiliation": "Synaptics Lab"
+    }
+  ],
+  "access_right": "open",
+  "license": "Apache-2.0",
+  "keywords": [
+    "Bridge-Free Settlement",
+    "Trilateral Rails",
+    "Post-Quantum Cryptography",
+    "WOTS+",
+    "RFC 8391",
+    "Solana Token-2022",
+    "XRPL SHAMap",
+    "Instruction Introspection",
+    "Cross-Ledger Clearing",
+    "Zero Wrapped Tokens",
+    "ISO 20022 UETR",
+    "Defensive Prior Art",
+    "35 U.S.C. 102"
+  ]
+}

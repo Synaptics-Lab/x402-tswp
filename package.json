@@ -1,24 +1,10 @@
 {
   "name": "@synaptics/x402-tswp",
-  "version": "1.0.0",
-  "description": "RFC-0402 X402 Typed Settlement Wire Protocol Specification and Reference Conformance Suite",
+  "version": "0.1.0",
+  "private": true,
   "type": "module",
+  "description": "Typed source of truth for the X402 Typed Settlement Wire Protocol (draft-shabazz-http-x402-tswp-01) operational discriminator registry — zero-dependency validator + constructor functions.",
   "scripts": {
-    "test": "node test/vectors.test.mjs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Synaptics-Lab/x402-tswp.git"
-  },
-  "keywords": [
-    "x402",
-    "settlement",
-    "http-402",
-    "solana",
-    "xrpl",
-    "fdc3",
-    "iso20022"
-  ],
-  "author": "Abdul Shabazz <veritasvaultone@gmail.com>",
-  "license": "Apache-2.0"
+    "test": "node --test test/vectors.test.mjs"
+  }
 }

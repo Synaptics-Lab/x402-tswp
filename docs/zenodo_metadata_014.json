@@ -1,0 +1,62 @@
+{
+  "title": "System, Method, and Delay-Tolerant Radio Wire Framing for Sovereign Off-Grid Financial Settlement over LoRa Mesh Networks, Sub-GHz Radio Transceivers, and Disconnected Edge Gateways",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>A formal technical disclosure and defensive publication establishing prior art for an off-grid, delay-tolerant financial settlement protocol and compact radio wire framing architecture (X402-LORA) operating across uncoordinated Sub-GHz Long Range (LoRa) mesh radio networks (868 MHz / 915 MHz ISM bands).</p><p>By compressing the entire atomic financial state transition—comprising an immutable transaction UUID, ADR-062 256-lane sequential watermark nonce, cross-currency corridor identifier, 64-bit base-unit value, absolute expiration epoch, 256-bit sender public key, 64-bit recipient account identifier, and an Ed25519 cryptographic signature—into an exact 144-byte binary wire payload, the settlement voucher fits entirely within the single-packet Maximum Transmission Unit (MTU) of Semtech SX1261/SX1262/SX1276 transceivers and Meshtastic broadcast frames without packet fragmentation.</p><p>Establishes offline double-spend mitigation via localized 256-lane nonce partitioning (allocating dedicated offline sub-lanes 0..31), sub-10ms signature verification on low-power microcontrollers (ESP32-S3 / ARM Cortex-M4), and opportunistic store-and-forward batch ingestion into Layer-1 DAG consensus upon encountering edge gateways. Published pursuant to 35 U.S.C. § 102(a)(1) and EPC Article 54(2) establishing defensive prior art.</p>",
+  "creators": [
+    {
+      "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "LoRa Mesh",
+    "Meshtastic",
+    "Delay-Tolerant Networking",
+    "Off-Grid Settlement",
+    "Sub-GHz Radio",
+    "Semtech SX1262",
+    "X402-TSWP",
+    "256-Lane Nonce",
+    "ADR-062",
+    "Ed25519 Microcontroller",
+    "Emerging Markets",
+    "Defensive Prior Art",
+    "35 U.S.C. 102",
+    "EPC Art 54"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isPartOf",
+      "identifier": "10.5281/zenodo.23000701",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23038493",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23041557",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22996200",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "isSupplementedBy",
+      "identifier": "https://github.com/Synaptics-Lab/Synaptic-Source",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "title": "System, Method, and Digital Public Infrastructure Architecture for Blotter-Direct Sovereign Clearing, Real-Time Fiscal Revenue Ingestion, and Float Sovereignty in Emerging Markets: A Case Study of Tanzania",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>A formal macroeconomic and systems engineering technical disclosure establishing defensive prior art for a Sovereign Digital Public Infrastructure (DPI) payment rail and real-time fiscal revenue ingestion architecture operating directly on a 256-lane Layer-1 settlement blotter. Using the United Republic of Tanzania as the primary operational reference model, this specification addresses the systemic failure modes of closed-loop private mobile money cartels (M-Pesa, Airtel Money, Tigo/Yas), predatory citizen tolling (1.5% to 3.5%), the failure of stacked mobile money levies under the Finance Act 2021, and the loss of national float sovereignty across commercial banks.</p><p>The disclosure codifies: (1) Common-carrier telecommunications routing under EPOCA §26 where licensed carriers act as dumb data pipes receiving a regulated cost-plus transport tariff (20 TZS / 0.02%); (2) National identity key derivation pairing biometric National Identification Authority (NIDA) NIN credentials directly to Ed25519 sovereign accounts; (3) Invariant 9 (SigmaDebits == SigmaCredits + SigmaFees, Delta=0) continuous solvency fee conservation executing an automated, real-time 18 basis point (0.18%) fiscal revenue split directly into the Ministry of Finance Treasury Single Account (TSA) at the central bank in the exact millisecond of settlement, yielding ~252 Billion TZS annually in un-evadable public revenue; (4) Re-centralization of multi-trillion TZS mobile money trust float into the Bank of Tanzania Sovereign Reserve Pool; and (5) Disaster and rural off-grid settlement continuity via SYN-TD-014 144-byte Sub-GHz LoRa radio mesh vouchers. Published pursuant to 35 U.S.C. § 102(a)(1) and EPC Article 54(2) establishing defensive prior art.</p>",
+  "creators": [
+    {
+      "name": "Shabazz, Abdul",
+      "affiliation": "Synaptics Lab"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "Digital Public Infrastructure",
+    "DPI",
+    "Sovereign Settlement",
+    "Bank of Tanzania",
+    "Tanzania Revenue Authority",
+    "Real-Time Fiscal Ingestion",
+    "Mobile Money",
+    "M-Pesa",
+    "Common Carrier Rail",
+    "NIDA Biometric Identity",
+    "Float Sovereignty",
+    "Invariant 9",
+    "256-Lane Nonce",
+    "Defensive Prior Art",
+    "35 U.S.C. 102",
+    "EPC Art 54"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isPartOf",
+      "identifier": "10.5281/zenodo.23000701",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23038493",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23041557",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.23041910",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "references",
+      "identifier": "10.5281/zenodo.22996200",
+      "scheme": "doi",
+      "resource_type": "publication-technicalnote"
+    },
+    {
+      "relation": "isSupplementedBy",
+      "identifier": "https://github.com/Synaptics-Lab/Synaptic-Source",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ]
+}
