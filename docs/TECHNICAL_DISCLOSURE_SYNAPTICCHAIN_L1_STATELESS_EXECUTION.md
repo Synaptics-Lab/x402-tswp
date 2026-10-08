@@ -51,19 +51,19 @@ Local desktop enclave isolating trading presentation tiers from private keys, ve
 ### 2.10. Amdahl Circumvention via 256-Lane Parallel SMR (SYN-TD-010 · DOI: 10.5281/zenodo.23003928)
 Empirical proof of Gustafson-Barsis linear throughput scaling on parallel state machine replication ($S = 38.56\times$, $p = 97.78\%$, 0 collisions).
 
-### 2.11. Zero-Knowledge Off-Chain RWA Atomic DvP (SYN-TD-011 · DOI: 10.5281/zenodo.23038493)
+### 2.11. Zero-Knowledge Off-Chain RWA Atomic DvP (SYN-TD-012 · DOI: 10.5281/zenodo.23041137)
 Delivery versus Payment (DvP) protocol binding real-world asset state transfers to cryptographic proof anchors.
 
-### 2.12. Low-Bandwidth Opportunistic Mesh Relaying (SYN-TD-012 · DOI: 10.5281/zenodo.23041137)
+### 2.12. Low-Bandwidth Opportunistic Mesh Relaying (SYN-TD-013 · DOI: 10.5281/zenodo.23041557)
 Fragmented transaction transport over constrained mobile and opportunistic peer-to-peer topologies.
 
-### 2.13. Off-Grid LoRa Mesh Emergency Settlement Rail (SYN-TD-013 · DOI: 10.5281/zenodo.23041910)
+### 2.13. Off-Grid LoRa Mesh Emergency Settlement Rail (SYN-TD-014 · DOI: 10.5281/zenodo.23041910)
 Sub-gigahertz long-range radio protocol enabling cryptographic transaction broadcast and consensus checkpoint verification during total internet blackout.
 
-### 2.14. SWIFT pacs.008/pacs.002 X402 Settlement Binding (SYN-TD-014 · DOI: 10.5281/zenodo.23042571)
+### 2.14. SWIFT pacs.008/pacs.002 X402 Settlement Binding (SYN-TD-011 · DOI: 10.5281/zenodo.23038493 · SYN-FPS-2026-001)
 Canonical serialization rules mapping ISO 20022 XML fields into compact binary X402 headers carrying RFC 4122 SWIFT UETRs.
 
-### 2.15. Continuous Netting Rolling Watermark (SYN-TD-015 · DOI: 10.5281/zenodo.23135960)
+### 2.15. Continuous Netting Rolling Watermark (CAN Rev-2 · DOI: 10.5281/zenodo.23135960; protocol record SYN-TD-007)
 Off-chain deterministic watermark rolling cycle preventing double-counting across multi-ledger netting windows.
 
 ### 2.16. Zero-Custody Autonomous Agent Settlement via ADR-555 Enclave (SYN-TD-016)
@@ -80,6 +80,18 @@ A 100% schema-compatible Stripe v1 `PaymentIntent` emulator (`syn-stripe-bridge`
 
 ### 2.20. Decoupled High-Speed Execution and Sovereign SMR Clearinghouse (SYN-TD-020)
 Decoupled architecture enforcing the CPMI-IOSCO PFMI principle of separation of duties: Solana Token-2022 acts as the ultra-fast execution engine (sub-400ms slots), while Synaptic L1 acts as the uncorrelated sovereign clearinghouse archiving ISO 20022 XML documents and netting proofs without execution state rent.
+
+---
+
+**TD code verification note (2026-10-08):** Section labels in §2.11–2.15 were corrected to
+match the permanently anchored Zenodo registry: TD-011 = SYN-FPS-2026-001 Financial PTB
+Wire Standard · 10.5281/zenodo.23038493; TD-012 = ZKO RWA Atomic DvP · 10.5281/zenodo.23041137;
+TD-013 = Mobile P2P Low-Bandwidth Settlement · 10.5281/zenodo.23041557; TD-014 = LoRa Mesh
+DTN Wire Framing · 10.5281/zenodo.23041910; TD-015 = Tanzania Sovereign DPI Blotter
+Blueprint · 10.5281/zenodo.23042571 (the Tanzania record carries no subsystem section
+herein — §2.15 is the CAN Rev-2 paper, DOI 10.5281/zenodo.23135960, not an anchored
+TD record). TD-016 through TD-020 were minted against this Rev-2 disclosure and its
+associated standalone records (see `docs/zenodo_metadata_016.json` – `_020.json`).
 
 ---
 
