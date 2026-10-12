@@ -33,6 +33,13 @@
 [![DOI: SYN-TD-2026-019](https://zenodo.org/badge/DOI/10.5281/zenodo.23226479.svg)](https://doi.org/10.5281/zenodo.23226479)
 [![DOI: SYN-TD-2026-020](https://zenodo.org/badge/DOI/10.5281/zenodo.23226579.svg)](https://doi.org/10.5281/zenodo.23226579)
 
+> This protocol runs live for Colosseum Radar judges at
+> **[colosseum.synapticchain.xyz](https://colosseum.synapticchain.xyz)** — clearinghouse console
+> (`/`), nine-stage live-fire settlement demo (`/demo`), Continuous Atomic Netting on the
+> 400 ms estate window (`/can`), position brief (`/brief`), and shipped-scope milestone
+> receipts (`/milestones`). Zero-setup verification fast-path:
+> [JUDGES_FLOW.md (Synaptics-Lab/synaptic-fx-terminal)](https://github.com/Synaptics-Lab/synaptic-fx-terminal/blob/main/JUDGES_FLOW.md).
+
 An extensible, byte-exact state-machine grammar and multi-rail transport protocol for machine-to-machine (M2M) micropayments, collateralization, and multilateral netting settlements.
 
 ## Overview
