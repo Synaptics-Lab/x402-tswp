@@ -11,7 +11,7 @@
 [![IANA ALPN](https://img.shields.io/badge/IANA%20ALPN-x402%20%26%20tswp-darkblue.svg)](ietf/IETF_ANNOUNCEMENT_AND_IANA_REGISTRATION.md)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
 
-### CERN Zenodo Defensive Patent Portfolio (20 Registered DOIs)
+### CERN Zenodo Defensive Patent Portfolio (24 Registered DOIs)
 [![DOI: SYN-TD-2026-001](https://zenodo.org/badge/DOI/10.5281/zenodo.22979715.svg)](https://doi.org/10.5281/zenodo.22979715)
 [![DOI: SYN-TD-2026-002](https://zenodo.org/badge/DOI/10.5281/zenodo.22983522.svg)](https://doi.org/10.5281/zenodo.22983522)
 [![DOI: SYN-TD-2026-003](https://zenodo.org/badge/DOI/10.5281/zenodo.22994745.svg)](https://doi.org/10.5281/zenodo.22994745)
@@ -32,6 +32,12 @@
 [![DOI: SYN-TD-2026-018](https://zenodo.org/badge/DOI/10.5281/zenodo.23226408.svg)](https://doi.org/10.5281/zenodo.23226408)
 [![DOI: SYN-TD-2026-019](https://zenodo.org/badge/DOI/10.5281/zenodo.23226479.svg)](https://doi.org/10.5281/zenodo.23226479)
 [![DOI: SYN-TD-2026-020](https://zenodo.org/badge/DOI/10.5281/zenodo.23226579.svg)](https://doi.org/10.5281/zenodo.23226579)
+[![DOI: SYN-TD-2026-021](https://zenodo.org/badge/DOI/10.5281/zenodo.23373168.svg)](https://doi.org/10.5281/zenodo.23373168)
+[![DOI: SYN-TD-2026-022](https://zenodo.org/badge/DOI/10.5281/zenodo.23427407.svg)](https://doi.org/10.5281/zenodo.23427407)
+[![DOI: SYN-TD-2026-023](https://zenodo.org/badge/DOI/10.5281/zenodo.23427410.svg)](https://doi.org/10.5281/zenodo.23427410)
+[![DOI: SYN-TD-2026-024](https://zenodo.org/badge/DOI/10.5281/zenodo.23427412.svg)](https://doi.org/10.5281/zenodo.23427412)
+
+> **Machine-checked formal verification series (added 2026-10-17):** SYN-TD-022 (CAN temporal shells, TLA+ + Quint, 0 violations), SYN-TD-023 (watermark-bitmap 256-lane nonce core), and SYN-TD-024 (checkpoint-replay catchup cursor — "the cursor never leads the ledger") are Quint 0.33.0 + Apalache 0.62.1 packs written directly from the implementation, zero invariant violations in simulation (10,000 traces) and bounded symbolic model-checking. Each record continues its predecessor; anchored under the master umbrella [10.5281/zenodo.23000701](https://doi.org/10.5281/zenodo.23000701).
 
 > This protocol runs live for Colosseum Radar judges at
 > **[colosseum.synapticchain.xyz](https://colosseum.synapticchain.xyz)** — clearinghouse console
